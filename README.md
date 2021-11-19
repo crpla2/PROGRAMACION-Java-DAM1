@@ -1,2 +1,2 @@
 # repoProgramacion
-repositorio para el módulo de Programación
+El repositorio para el módulo de Programación
