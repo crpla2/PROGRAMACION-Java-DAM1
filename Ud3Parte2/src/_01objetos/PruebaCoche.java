@@ -4,8 +4,8 @@ package _01objetos;
 public class PruebaCoche {
   public static void main(String[] args) {
    
-    Coche cocheDeLuis = new Coche("Saab", "93");
-    Coche cocheDeJuan = new Coche("Toyota", "Avensis");
+    CocheLo cocheDeLuis = new CocheLo("Saab", "93");
+    CocheLo cocheDeJuan = new CocheLo("Toyota", "Avensis");
 
     cocheDeLuis.recorre(30);
     cocheDeLuis.recorre(40);
@@ -15,6 +15,6 @@ public class PruebaCoche {
     cocheDeJuan.recorre(90);
     System.out.println("El coche de Luis ha recorrido " + cocheDeLuis.getKilometraje() + "Km");
     System.out.println("El coche de Juan ha recorrido " + cocheDeJuan.getKilometraje() + "Km");
-    System.out.println("El kilometraje total ha sido de " + Coche.getKilometrajeTotal() + "Km");
+    System.out.println("El kilometraje total ha sido de " + CocheLo.getKilometrajeTotal() + "Km");
   }
 }
