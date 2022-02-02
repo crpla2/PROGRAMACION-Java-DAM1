@@ -3,7 +3,7 @@ public class Coche {
 
   private static int kilometrajeTotal = 0;
   public static int getKilometrajeTotal() {
-    return Coche.kilometrajeTotal;
+    return CocheLo.kilometrajeTotal;
   }
   
   private String marca;

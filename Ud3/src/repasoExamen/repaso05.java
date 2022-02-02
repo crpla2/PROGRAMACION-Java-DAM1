@@ -9,7 +9,7 @@ public class repaso05 {
 		String n[]= new String[x];
 		int sueldo[]=new int[x];
 		rellenar(n,sueldo);
-		rico(n,sueldo,maximo(sueldo));
+//		rico(sueldo,maximo(sueldo));
 		}
 		public static void rellenar (String a[], int b[]) {
 			Scanner s=new Scanner(System.in);
@@ -28,9 +28,9 @@ public class repaso05 {
 				max=b[i];
 			}return max;
 		}
-		public static void rico(String a[],int b[],int l) {
+		public static void rico(String a[],int b[]) {
 			for(int i=0;i<b.length;i++) {
-				if(b[i]==maximo(l))
+				if (b[i]==maximo(b))
 					System.out.println("+ rico: "+a[i]+"gana"+b[i]);
 			}}
 

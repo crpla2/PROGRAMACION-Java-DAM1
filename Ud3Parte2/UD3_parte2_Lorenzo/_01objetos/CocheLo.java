@@ -1,16 +1,17 @@
 package _01objetos;
-public class Coche {
+public class CocheLo {
 
-  private static int kilometrajeTotal = 0;
+  public static int kilometrajeTotal = 0;
+  
   public static int getKilometrajeTotal() {
-    return Coche.kilometrajeTotal;
+    return Coche.getKilometrajeTotal();
   }
   
   private String marca;
   private String modelo;
   private int kilometraje;
 
-  public Coche(String ma, String mo) {
+  public CocheLo(String ma, String mo) {
     marca = ma;
     modelo = mo;
     kilometraje = 0;
