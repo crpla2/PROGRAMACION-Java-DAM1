@@ -1,14 +1,14 @@
-package Repaso_4_5_6;
+package repaso01;
 
 import java.util.Date;
 
-public final class Z extends B implements Comparable<Z>,Saludar{
+public final class Z extends B implements Comparable<Z>, Saludar {
+
 	private int i;
-	
+
 	public Z(String s, int i) {
 		super(s);
-		this.i=i;
-		
+		this.i = i;
 	}
 
 	public int getI() {
@@ -21,26 +21,17 @@ public final class Z extends B implements Comparable<Z>,Saludar{
 
 	@Override
 	public String toString() {
-		return super.toString() +", i= " + i ;
+		return "i=" + i + ", " + super.toString();
 	}
 
 	@Override
 	public int compareTo(Z o) {
-		return( (this.i)-(o.getI()));
-		
-	}
 
+		return (i - o.getI());
+	}
 
 	@Override
 	public void saludo() {
-//		Date d= new Date();
-//		if ((d.getHours())<14&&((d.getHours()>7)))
-//		System.out.println("Buenos Dias");
-//		if ((d.getHours())<20&&((d.getHours()>14)))
-//			System.out.println("Buenas Tardes");
-//		if ((d.getHours())>20&&((d.getHours()<7)))
-//			System.out.println("Buenas Noches");
-//		
 		Date d= new Date();
 		if (d.getHours()<14&&d.getHours()>7)
 		System.out.println("Buenos Dias");

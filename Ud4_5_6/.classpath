@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="cadenas_envoltorios"/>
 	<classpathentry kind="src" path="herencias_interfaces_polimorfismo"/>
 	<classpathentry kind="src" path="Ejercicios"/>
+	<classpathentry kind="src" path="repasoExamen"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
