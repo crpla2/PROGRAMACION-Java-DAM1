@@ -1,4 +1,4 @@
-package Ejercicios01_03_Fechas;
+package Ejercicios01_02_Fechas;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package Ejercicios01_03_Fechas;
+package Ejercicios03_06_String;
 
 public class Ejercicio_03_b {
 
