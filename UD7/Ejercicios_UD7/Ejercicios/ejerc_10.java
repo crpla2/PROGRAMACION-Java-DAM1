@@ -2,8 +2,6 @@ package Ejercicios;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class ejerc_10 {

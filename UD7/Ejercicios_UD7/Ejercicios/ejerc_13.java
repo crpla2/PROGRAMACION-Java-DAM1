@@ -1,9 +1,8 @@
 	package Ejercicios;
 
-	import java.io.FileNotFoundException;
 	import java.io.FileReader;
-	import java.io.FileWriter;
-	import java.io.IOException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 	public class ejerc_13 {
 
@@ -13,10 +12,10 @@
 			int caracterleido;
 
 			while ((caracterleido = fr.read()) != -1) {
-				if( caracterleido==(' '))
-					fw.write(caracterleido);
+				if( caracterleido<=('Z')&&caracterleido>=('A')||caracterleido<=('z')&&caracterleido>=('a'))
+					fw.write(caracterleido-1);
 				else
-				fw.write(caracterleido - 1);
+				fw.write(caracterleido );
 			}
 			fw.close();
 			fr.close();
