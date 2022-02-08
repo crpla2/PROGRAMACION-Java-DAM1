@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Ejercicios_UD7"/>
 	<classpathentry kind="src" path="07_04_Ud7_InterfacesGraficasSencillas"/>
-	<classpathentry kind="src" path="ejemplos"/>
 	<classpathentry kind="src" path="PruebaFicheros"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
