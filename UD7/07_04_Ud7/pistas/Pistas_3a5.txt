@@ -1,0 +1,26 @@
+-----------------------------------------------------------------------------------
+- Para ejercicio 3, saber qué botón concreto es, varias formas:
+	- _12Swing11.java 
+		 public void actionPerformed(ActionEvent e)
+    			{
+            		if (e.getSource() == boton1) {........
+	- _11Swing10.java
+		public void actionPerformed(ActionEvent e) {
+	    		Float f = new Float(cantidad.getText());
+		        float valor = f.floatValue();
+	    		String s = (String)e.getActionCommand();
+	    		if(s.equals("A euros")) { ....
+
+- Para ejercicio 4, control: 
+			private JPasswordField textfield2;
+			cambiar título ventana --> método setTitle(".....")
+- Para ejercicio 5, añadir imágenes
+			imagenCalculadora = new JLabel();
+			imagenCalculadora.setBounds(102, 2, 200, 80);
+			ImageIcon iconoCalculadora =new ImageIcon("calculadora.jpg");
+			imagenCalculadora.setIcon(iconoCalculadora);
+			add(imagenCalculadora);
+		  , para salir --> System.exit(0);
+		  , para botón "acerca de " método JOptionPane.showMessageDialog....
+
+			

@@ -22,19 +22,19 @@ public class Ejercicio_01_c {
 		
 		
 		
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==1)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==1)
 			System.out.println("Lunes");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==2)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==2)
 			System.out.println("Martes");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==3)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==3)
 			System.out.println("Miercoles");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==4)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==4)
 			System.out.println("Jueves");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==5)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==5)
 			System.out.println("Viernes");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==6)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==6)
 			System.out.println("Sabado");
-		if(fecha.get(Calendar.DAY_OF_WEEK)-1==7)
+		if(fecha.get(Calendar.DAY_OF_WEEK)==7)
 			System.out.println("Domingo");
 	
 	}

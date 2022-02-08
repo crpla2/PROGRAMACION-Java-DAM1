@@ -1,0 +1,120 @@
+PISTA PRÁCTICA 7
+La primera interfaz por el botón, la segunda por el checkbox, nos centramos en esta última
+public class Practica7 extends JFrame implements ActionListener, ChangeListener{
+....
+private JCheckBox check1;
+....
+
+check1=new JCheckBox("Texto del checkbox");
+check1.setBounds(10,50,100,30);
+...
+registrar el manejador
+check1.addChangeListener(this);
+...
+----------------------------------------------------------------------------------
+public void stateChanged(ChangeEvent e) {
+       check1.isSelected()==true -->se ha puesto a true
+.....
+----------------------------------------------------------------------------------
+
+PISTAS PRÁCTICA 8
+
+*** HABILITAR BOTÓN --> botonX.setEnabled(true)
+****
+import javax.swing.*;
+import javax.swing.event.*;
+public class CheckBox extends JFrame {
+    private JCheckBox check1,check2,check3;
+    public CheckBox() {
+        setLayout(null);
+        check1=new JCheckBox("Inglés");
+        check1.setBounds(10,10,150,30);
+        check1.addChangeListener(new OyenteCasilla());
+        add(check1);
+        check2=new JCheckBox("Francés");
+        check2.setBounds(10,50,150,30);
+        check2.addChangeListener(new OyenteCasilla());        
+        add(check2);
+        check3=new JCheckBox("Alemán");
+        check3.setBounds(10,90,150,30);
+        check3.addChangeListener(new OyenteCasilla());        
+        add(check3);        
+    }
+    
+    
+
+    public static void main(String[] ar) {
+    	CheckBox formulario1=new CheckBox();
+        formulario1.setBounds(0,0,300,200);
+        formulario1.setVisible(true);
+    } // del main
+    class OyenteCasilla implements ChangeListener{
+    	public void stateChanged(ChangeEvent e){
+            String cad="";
+            if (check1.isSelected()==true) {
+                cad=cad+"Inglés-";
+            }
+            if (check2.isSelected()==true) {
+                cad=cad+"Francés-";
+            }
+            if (check3.isSelected()==true) {
+                cad=cad+"Alemán-";
+            }
+            setTitle(cad);
+        }
+    }
+}
+*********************************************************************************
+*********************************************************************************
+
+PISTAS 9
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class botones1 extends JFrame {
+    private JRadioButton radio1,radio2,radio3;
+    private ButtonGroup bg;
+    public botones1() {
+    	setTitle("Ejemplo JRadioButton");
+    	
+        setLayout(null);
+        bg=new ButtonGroup();
+        radio1=new JRadioButton("640*480");
+        radio1.setBounds(10,20,100,30);
+        radio1.addChangeListener(new OyenteBotonesOpcion());
+        add(radio1);
+        bg.add(radio1);
+        radio2=new JRadioButton("800*600");
+        radio2.setBounds(10,70,100,30);
+        radio2.addChangeListener(new OyenteBotonesOpcion());        
+        add(radio2);
+        bg.add(radio2);
+        radio3=new JRadioButton("1024*768");
+        radio3.setBounds(10,120,100,30);
+        radio3.addChangeListener(new OyenteBotonesOpcion());        
+        add(radio3);
+        bg.add(radio3);        
+    }
+    
+    
+
+    public static void main(String[] args) {
+        botones1 formulario1 = new botones1();
+        formulario1.setBounds(0,0,350,230);
+        formulario1.setVisible(true);
+    } // del main
+    class OyenteBotonesOpcion implements ChangeListener{
+    	public void stateChanged(ChangeEvent e) {
+            if (radio1.isSelected()) {
+                setSize(640,480);
+            }
+            if (radio2.isSelected()) {
+                setSize(800,600);
+            }
+            if (radio3.isSelected()) {
+                setSize(1024,768);
+            }        
+        }
+    	
+    }
+}
