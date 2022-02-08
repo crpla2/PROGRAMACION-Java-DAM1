@@ -18,7 +18,6 @@ public class ejerc_11 {
 			BufferedReader br1 = new BufferedReader(fr1);
 			BufferedReader br2 = new BufferedReader(fr2);
 			try {
-
 				while (br1.read() != -1)
 					tree.add(br1.readLine());
 				while (br2.read() != -1)
