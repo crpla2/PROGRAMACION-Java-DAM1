@@ -1,4 +1,4 @@
-package examen3;
+package ExamenHerencias_Lo;
 import java.util.ArrayList;
 import java.util.Collections;
 

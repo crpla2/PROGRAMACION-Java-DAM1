@@ -1,4 +1,4 @@
-package examen3;
+package ExamenHerencias_Lo;
 
 public class Cuenta implements Comparable<Cuenta> {
   private long numero;
