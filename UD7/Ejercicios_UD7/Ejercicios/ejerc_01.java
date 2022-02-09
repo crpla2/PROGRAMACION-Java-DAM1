@@ -1,16 +1,18 @@
 package Ejercicios;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class ejerc_01 {
 	
 	public static void SumaYmedia (String s) {
-		try {double suma=0,numero,media;int i=0;
+		try {double suma=0,media=0;int i=0;String numero="";
 			FileReader fr= new FileReader(s);
-			while((numero=fr.read())!=-1) {
+			BufferedReader br= new BufferedReader(fr);
+			while((numero=br.readLine())!=null) {
 				i++;
-				suma+=(double)numero;
+				suma+=Double.parseDouble(numero);
 			}
 				media=suma/i;
 				fr.close();

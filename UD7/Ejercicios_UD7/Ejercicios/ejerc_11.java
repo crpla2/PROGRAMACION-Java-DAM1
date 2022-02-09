@@ -3,7 +3,9 @@ package Ejercicios;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.TreeSet;
 
 public class ejerc_11 {
@@ -13,15 +15,16 @@ public class ejerc_11 {
 		String ruta1 = "Ficheros/Persona1";
 		String ruta2 = "Ficheros/Persona2";
 		try {
+			String nombres = "", nombres2 = "";
 			FileReader fr1 = new FileReader(ruta1);
 			FileReader fr2 = new FileReader(ruta2);
 			BufferedReader br1 = new BufferedReader(fr1);
 			BufferedReader br2 = new BufferedReader(fr2);
 			try {
-				while (br1.read() != -1)
-					tree.add(br1.readLine());
-				while (br2.read() != -1)
-					tree.add(br2.readLine());
+				while ((nombres = br1.readLine()) != null)
+					tree.add(nombres);
+				while ((nombres2 = br2.readLine()) != null)
+					tree.add(nombres2);
 				fr1.close();
 				fr2.close();
 				br1.close();
@@ -34,11 +37,16 @@ public class ejerc_11 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		for (String g : tree)
-			System.out.println(g);
+		try {
+			PrintWriter fw = new PrintWriter(new FileWriter("Ficheros/Persona3.txt"));
+			for (String g : tree)
+				fw.println(g);
+			fw.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
