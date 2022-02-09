@@ -1,4 +1,4 @@
-package ExamenHerencias_Lo;
+package ExamenObjetos_Lo;
 public class Main {
 	public static void main(String[] args) {
 		Banco$$ b = new Banco$$();

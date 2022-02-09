@@ -1,4 +1,4 @@
-package ExamenHerencias_Lo;
+package ExamenObjetos_Lo;
 
 import java.util.ArrayList;
 import java.util.Collections;
