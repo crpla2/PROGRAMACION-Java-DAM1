@@ -1,3 +1,4 @@
+package ExamenHerencias;
 
 public abstract class Empleado {
 	private String nombre;

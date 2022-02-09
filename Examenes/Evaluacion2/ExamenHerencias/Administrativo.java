@@ -1,3 +1,4 @@
+package ExamenHerencias;
 
 public class Administrativo extends Empleado{
 	private int antiguedad;

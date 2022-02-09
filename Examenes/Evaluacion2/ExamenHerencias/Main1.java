@@ -1,3 +1,4 @@
+package ExamenHerencias;
 
 
 public class Main1 {

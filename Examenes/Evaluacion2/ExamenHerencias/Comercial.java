@@ -1,3 +1,4 @@
+package ExamenHerencias;
 
 public class Comercial extends Empleado{
 	private double ventasMensuales;
