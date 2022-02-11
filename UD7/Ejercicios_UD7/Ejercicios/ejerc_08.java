@@ -14,13 +14,13 @@ public class ejerc_08 {
 		try {
 			dis = new DataInputStream(new FileInputStream("Ficheros/temperaturas.dat"));
 			String s = dis.readUTF();
-			System.out.println(s);
+			System.out.println(s+"\n");
 			int i;
 			Double d;
 			while (true) {
 				i = dis.readInt();
 				d = dis.readDouble();
-				System.out.println("Hora: " + i + ", Temperatura: " + d);
+				System.out.printf("Hora: %dh, Temperatura: %.2f ºC\n",i,d);
 				if (max < d)
 					max = d;
 				if (min > d)
@@ -41,7 +41,7 @@ public class ejerc_08 {
 			e.printStackTrace();
 		}
 		media = media / cont;
-		System.out.println("maximo:"+max+", minimo:"+min+", media:"+media);
+		System.out.printf("\nTemperatura máxima: %.2f ºC\nTemperatura mínima: %.2f ºC\nTemperatura media: %.2f ºC",max,min,media);
 	}
 
 }

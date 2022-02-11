@@ -12,7 +12,7 @@ public class ejerc_07 {
 				dos = new DataOutputStream(new FileOutputStream(
 										"Ficheros/temperaturas.dat"));
 				
-				dos.writeUTF("10 Agosto 2021");
+				dos.writeUTF("10 Agosto 2021:");
 				for(int i=0;i<=23;i++) {
 					dos.writeInt(i);
 					dos.writeDouble(Math.random()*30);
