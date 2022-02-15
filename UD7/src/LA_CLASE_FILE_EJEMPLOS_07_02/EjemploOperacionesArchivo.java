@@ -1,4 +1,4 @@
-package LA_CLASE_FIE_EJEMPLOS_07_02;
+package LA_CLASE_FILE_EJEMPLOS_07_02;
 
 import java.io.*;
 

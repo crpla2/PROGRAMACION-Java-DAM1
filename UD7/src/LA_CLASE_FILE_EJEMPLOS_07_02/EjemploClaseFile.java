@@ -1,4 +1,4 @@
-package LA_CLASE_FIE_EJEMPLOS_07_02;
+package LA_CLASE_FILE_EJEMPLOS_07_02;
 
 import java.io.*;
 import java.util.*;
@@ -7,6 +7,7 @@ import java.util.*;
 public class EjemploClaseFile {
 	public static void main (String arg[]){
 		String directorio;
+		
 		if (arg.length > 0)
 			directorio=arg[0];
 		else
