@@ -15,7 +15,7 @@ public class Escritura {
 
         try {
             //Se crea el fichero
-            fos = new FileOutputStream("d://personas.dat");
+            fos = new FileOutputStream("Ficheros/personas.dat");
             salida = new ObjectOutputStream(fos);
             //Se crea el primer objeto Persona
             p = new Persona("12345678A","Alberto Carrera Martín", 30); // Ya le gustaría....

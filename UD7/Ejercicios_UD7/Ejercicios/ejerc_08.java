@@ -36,9 +36,9 @@ public class ejerc_08 {
 		}
 		try {
 			dis.close();
-		} catch (IOException e) {
+		} catch (IOException ee) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ee.printStackTrace();
 		}
 		media = media / cont;
 		System.out.printf("\nTemperatura máxima: %.2f ºC\nTemperatura mínima: %.2f ºC\nTemperatura media: %.2f ºC",max,min,media);
