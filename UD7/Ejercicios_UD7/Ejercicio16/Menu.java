@@ -23,7 +23,7 @@ public class Menu {
 			do {
 				System.out.println("1.Añadir Clientes");
 				System.out.println("2.Consultar Clientes");
-				System.out.println("3.Consultar Cliente");
+				System.out.println("3.Consultar Clientes morosos");
 				System.out.println("4.Modificar Clientes");
 				System.out.println("5.Borrar clientes");
 				System.out.println("6.Guardar Clientes");
