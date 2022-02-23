@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu_interfaces {
 	static ArrayList<Cliente> lista = new ArrayList<Cliente>();
 	static Scanner s = new Scanner(System.in);
 
@@ -100,6 +100,7 @@ public class Menu {
 				System.out.println("El nif del cliente que intenta introducir ya existe");	
 			else
 				lista.add(nuevo);
+		
 	}
 
 	private static void consultarClientes() {
