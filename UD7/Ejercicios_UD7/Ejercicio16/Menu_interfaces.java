@@ -80,19 +80,14 @@ public class Menu_interfaces {
 		System.out.println("Introduce los datos del cliente: ");
 		String TUMADRE = s.nextLine();
 		System.out.println("Nombre:");
-		// String nombre = s.next();
 		String nombre = MyInput.readString();
 		System.out.println("Telefono:");
-		// String telefono = s.nextLine();
 		String telefono = MyInput.readString();
 		System.out.println("Direccion:");
-		// String direccion = s.nextLine();
 		String direccion = MyInput.readString();
 		System.out.println("Nif:");
-		// String nif = s.nextLine();
 		String nif = MyInput.readString();
 		System.out.println("Es moroso:");
-		// boolean moroso = Boolean.parseBoolean(s.nextLine());
 		boolean moroso = Boolean.parseBoolean(MyInput.readString());
 		Cliente nuevo=new Cliente(nombre, telefono, direccion, nif, moroso);	
 		for(Cliente c:lista)
