@@ -1,4 +1,4 @@
-package Ejercicios;
+package Ejercicio1_15;
 
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;

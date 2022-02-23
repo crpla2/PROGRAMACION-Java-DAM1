@@ -2,7 +2,7 @@ package Utilidades;
 
 public class esEntero {
 
-	public static boolean esNumero(String c) {
+	public static boolean esNumeroEntero(String c) {
 		try {
 			Integer.parseInt(c);
 			return true;

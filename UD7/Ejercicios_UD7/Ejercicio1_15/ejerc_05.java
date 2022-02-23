@@ -1,4 +1,4 @@
-package Ejercicios;
+package Ejercicio1_15;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;

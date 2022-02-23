@@ -1,9 +1,9 @@
-package Ejercicios;
+package Ejercicio1_15;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ejerc_14 {
+public class ejerc_15 {
 
 	public static void main(String[] args) {
 		String directorio;
@@ -26,19 +26,24 @@ public class ejerc_14 {
 			System.out.println("Ha ocurrido un error");
 			e.printStackTrace();
 		}
-
-		System.out.println("Su contenido es:");
+		int contA = 0, contD = 0;
+		System.out.println("\nSu contenido es:\n");
 		File[] archivos = actual.listFiles();
-		System.out.println("\nArchivos:");
+
 		for (File archivo : archivos)
-			if (archivo.isFile())
+			if (archivo.isFile()) {
 				System.out.println( archivo.getName());
-		System.out.println("\nDirectorios:");
+				contA++;
+			}
+		System.out.println("\nArchivos: " + contA+"\n");
+		
 		for (File archivo : archivos)
-			if (archivo.isDirectory())
+			if (archivo.isDirectory()) {
 				System.out.println(archivo.getName());
-		}else
-			System.out.println("El archivo no existe");
+				contD++;
+			}
+		System.out.println("\nDirectorios: " + contD);
+		}else System.out.println("El archivo no existe");
 	}
 
 }
