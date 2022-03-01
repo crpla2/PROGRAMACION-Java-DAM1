@@ -23,6 +23,7 @@ public class Ejercicio03 extends JFrame {
 		super("Sumar y restar reales");
 		panel = getContentPane();
 		panel.setLayout((null));
+		
 		etiqueta1 = new JLabel("Num1");
 		etiqueta2 = new JLabel("Num2");
 		etiqueta1.setBounds(10, 20, 60, 20);
