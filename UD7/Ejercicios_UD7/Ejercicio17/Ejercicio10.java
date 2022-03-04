@@ -6,42 +6,70 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Ejercicio05 extends JFrame {
+public class Ejercicio10 extends JFrame {
 
 	Container panel;
-	public JButton botonSumar, botonMultiplicar, botonDividir, botonRestar, exit, creditos;
-
+	
+	public JMenuBar menu;
+	public JMenuItem botonSumar, botonMultiplicar, botonDividir,
+					 botonRestar, exit, about;
+	public JMenu oper, apli;
 	public JTextField Num1, Num2, calculo;
 	JLabel Dato1, Dato2, Resultado, ImgCalculadora;
 
-	public Ejercicio05() {
+	public Ejercicio10() {
 		super("Calculadora");
 		panel = getContentPane();
 		panel.setLayout((null));
-		
 		Dato1 = new JLabel("Dato 1:");
+		Dato2 = new JLabel("Dato 2:");
+		Resultado = new JLabel("Resultado:");
+		ImgCalculadora = new JLabel("");
+		ImgCalculadora.setBounds(102, 2, 200, 80);
+		
+		menu= new JMenuBar();
+		setJMenuBar(menu);
+		
+		oper= new JMenu("Operaciones");
+		menu.add(oper);
+		apli= new JMenu("Aplicación");
+		menu.add(apli);
+		
+		botonSumar =new JMenuItem("Sumar");
+		oper.add(botonSumar);
+		botonRestar =new JMenuItem("Restar");
+		oper.add(botonRestar);
+		botonMultiplicar =new JMenuItem("Multiplicar");
+		oper.add(botonMultiplicar);
+		botonDividir =new JMenuItem("Dividir");
+		oper.add(botonDividir);
+		
+		exit= new JMenuItem("Salir");
+		apli.add(exit);
+		about= new JMenuItem("Abour");
+		apli.add(about);
+		
+		
+		ImageIcon iconoCalculadora = new ImageIcon("07_04_Ud7/imagenes/calculadora.jpg");
+		ImgCalculadora.setIcon(iconoCalculadora);
+		add(ImgCalculadora);
+		
 		Dato1.setBounds(10, 120, 60, 20);
 		panel.add(Dato1);
 		
-		Dato2 = new JLabel("Dato 2:");
 		Dato2.setBounds(10, 150, 60, 20);
 		panel.add(Dato2);
 		
-		Resultado = new JLabel("Resultado:");
 		Resultado.setBounds(10, 180, 60, 20);
 		panel.add(Resultado);
-		
-		ImgCalculadora = new JLabel("");
-		ImgCalculadora.setBounds(102, 2, 200, 80);
-		ImageIcon iconoCalculadora = new ImageIcon("07_04_Ud7/imagenes/calculadora.jpg");
-		ImgCalculadora.setIcon(iconoCalculadora);
-		add(ImgCalculadora);	
 		
 		Num1 = new JTextField(5);
 		Num1.setBounds(102, 120, 80, 20);
@@ -51,47 +79,21 @@ public class Ejercicio05 extends JFrame {
 		Num2.setBounds(102, 150, 80, 20);
 		panel.add(Num2);
 
-		botonSumar = new JButton("+");
-		botonSumar.setBounds(200, 120, 45, 20);
-		panel.add(botonSumar);
-
-		botonRestar = new JButton("-");
-		botonRestar.setBounds(200, 150, 45, 20);
-		panel.add(botonRestar);
-
-		botonMultiplicar = new JButton("X");
-		botonMultiplicar.setBounds(200, 180, 45, 20);
-		panel.add(botonMultiplicar);
-
-		botonDividir = new JButton("/");
-		botonDividir.setBounds(200, 210, 45, 20);
-		panel.add(botonDividir);
-
-		exit = new JButton("");
-		exit.setBounds(102, 210, 45, 45);
-		panel.add(exit);
-		ImageIcon iconoExit = new ImageIcon("07_04_Ud7/imagenes/puerta.jpg");
-		exit.setIcon(iconoExit);
-
-		creditos = new JButton("");
-		creditos.setBounds(102, 260, 45, 45);
-		panel.add(creditos);
-		ImageIcon iconoCreditos = new ImageIcon("07_04_Ud7/imagenes/hombre.png");
-		creditos.setIcon(iconoCreditos);
-
 		calculo = new JTextField(6);
 		calculo.setBounds(102, 180, 80, 20);
 		panel.add(calculo);
 		calculo.setEditable(false);
 		calculo.setForeground(Color.red);
+		
 		botonSumar.addActionListener(new OyenteBoton());
 		botonRestar.addActionListener(new OyenteBoton());
 		botonMultiplicar.addActionListener(new OyenteBoton());
 		botonDividir.addActionListener(new OyenteBoton());
+		
 		exit.addActionListener(new OyenteBoton());
-		creditos.addActionListener(new OyenteBoton());
-
-		setSize(380, 400);
+		about.addActionListener(new OyenteBoton());
+		
+		setSize(300, 300);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -112,7 +114,7 @@ public class Ejercicio05 extends JFrame {
 
 			if (e.getSource() == botonSumar) {
 				if ((!esNumeroReal(Num1.getText())) || (!esNumeroReal(Num2.getText()))) {
-					JOptionPane.showMessageDialog(null, "Alguno de los valores introducidos no es un número real.\n"
+					JOptionPane.showMessageDialog(panel, "Alguno de los valores introducidos no es un número real.\n"
 							+ "Por favor corrijalo y vuelva a intentarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					resultado = Double.parseDouble(Num1.getText()) + Double.parseDouble(Num2.getText());
@@ -120,7 +122,7 @@ public class Ejercicio05 extends JFrame {
 			}
 			if (e.getSource() == botonRestar) {
 				if ((!esNumeroReal(Num1.getText())) || (!esNumeroReal(Num2.getText()))) {
-					JOptionPane.showMessageDialog(null, "Alguno de los valores introducidos no es un número real.\n"
+					JOptionPane.showMessageDialog(panel, "Alguno de los valores introducidos no es un número real.\n"
 							+ "Por favor corrijalo y vuelva a intentarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					resultado = Double.parseDouble(Num1.getText()) - Double.parseDouble(Num2.getText());
@@ -128,7 +130,7 @@ public class Ejercicio05 extends JFrame {
 			}
 			if (e.getSource() == botonMultiplicar) {
 				if ((!esNumeroReal(Num1.getText())) || (!esNumeroReal(Num2.getText()))) {
-					JOptionPane.showMessageDialog(null, "Alguno de los valores introducidos no es un número real.\n"
+					JOptionPane.showMessageDialog(panel, "Alguno de los valores introducidos no es un número real.\n"
 							+ "Por favor corrijalo y vuelva a intentarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					resultado = Double.parseDouble(Num1.getText()) * Double.parseDouble(Num2.getText());
@@ -136,15 +138,15 @@ public class Ejercicio05 extends JFrame {
 			}
 			if (e.getSource() == botonDividir) {
 				if ((!esNumeroReal(Num1.getText())) || (!esNumeroReal(Num2.getText()))) {
-					JOptionPane.showMessageDialog(null, "Alguno de los valores introducidos no es un número real.\n"
+					JOptionPane.showMessageDialog(panel, "Alguno de los valores introducidos no es un número real.\n"
 							+ "Por favor corrijalo y vuelva a intentarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					resultado = Double.parseDouble(Num1.getText()) / Double.parseDouble(Num2.getText());
 				}
 			}if (e.getSource() == exit) {
 				 System.exit(0);
-			}if (e.getSource() == creditos) {
-				JOptionPane.showMessageDialog(null, "Programa realizado por Carlos Rodrigo Pla", "Créditos", JOptionPane.INFORMATION_MESSAGE);
+			}if (e.getSource() == about) {
+				JOptionPane.showMessageDialog(panel, "Programa realizado por Carlos Rodrigo Pla", "Créditos", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			try {
@@ -156,7 +158,7 @@ public class Ejercicio05 extends JFrame {
 	}
 
 	public static void main(String args[]) {
-		Ejercicio05 ventana = new Ejercicio05();
+		Ejercicio10 ventana = new Ejercicio10();
 	}
 
 }
