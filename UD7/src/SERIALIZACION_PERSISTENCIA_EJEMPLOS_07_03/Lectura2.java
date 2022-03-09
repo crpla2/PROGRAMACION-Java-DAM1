@@ -28,6 +28,7 @@ public class Lectura2 {
 				p = (Persona) entrada.readObject();
 			}
 		}catch (EOFException e) {
+			System.out.println("-- FINAL DE FICHERO --");
 			
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
