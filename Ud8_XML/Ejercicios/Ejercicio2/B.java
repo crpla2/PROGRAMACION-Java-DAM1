@@ -27,9 +27,16 @@ import org.w3c.dom.Text;
 
 public class B {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException {
 		Document documento = null;
 		ObjectInputStream entrada = null;
+		Element departamento = null;
+		Element numDepartamento = null;
+		Text textoNumDep = null;
+		Element nombre = null;
+		Text textNombre = null;
+		Element localizacion = null;
+		Text textLocalizacion = null;
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder;
@@ -44,27 +51,30 @@ public class B {
 			Departamento d = (Departamento) entrada.readObject();
 			while (true) {
 
-				Element departamento = documento.createElement("departamento");
-
-				Element numDepartamento = documento.createElement("numero");
-				Text textoNumDep = documento.createTextNode(String.valueOf(d.getNumdepartamento()));
+				departamento = documento.createElement("departamento");
+				numDepartamento = documento.createElement("numero");
+				textoNumDep = documento.createTextNode(String.valueOf(d.getNumdepartamento()));
 				numDepartamento.appendChild(textoNumDep);
 				departamento.appendChild(numDepartamento);
 
-				Element nombre = documento.createElement("nombre");
-				Text textNombre = documento.createTextNode(d.getNombre());
+				nombre = documento.createElement("nombre");
+				textNombre = documento.createTextNode(d.getNombre());
 				nombre.appendChild(textNombre);
 				departamento.appendChild(nombre);
 
-				Element localizacion = documento.createElement("localizacion");
-				Text textLocalizacion = documento.createTextNode(d.getLocalidad());
+				localizacion = documento.createElement("localizacion");
+				textLocalizacion = documento.createTextNode(d.getLocalidad());
 				localizacion.appendChild(textLocalizacion);
 				departamento.appendChild(localizacion);
 
 				documento.getDocumentElement().appendChild(departamento);
-
+				d = (Departamento) entrada.readObject();
 			}
 		} catch (EOFException e) {
+			Source source = new DOMSource(documento);
+			Result result = new StreamResult(new File("documentos/departamentos.xml"));
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.transform(source, result);
 			System.out.println("-- FINAL DE FICHERO --");
 		} catch (ParserConfigurationException e1) {
 			// TODO Auto-generated catch block
@@ -79,32 +89,15 @@ public class B {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+
 			if (entrada != null) {
 				try {
 					entrada.close();
 				} catch (IOException e) {
+
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
-			Source source = new DOMSource(documento);
-			// Creo el Result, indicado que fichero se va a crear
-			Result result = new StreamResult(new File("documentos\\departamentos.xml"));
-
-			// Creo un transformer, se crea el fichero XML
-			Transformer transformer;
-
-			try {
-				transformer = TransformerFactory.newInstance().newTransformer();
-				transformer.transform(source, result);
-			} catch (TransformerConfigurationException | TransformerFactoryConfigurationError e) {
-				;
-				e.printStackTrace();
-			}
-
-			catch (TransformerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 
 		}

@@ -20,10 +20,10 @@ public class A {
 		dep2= new Departamento(2, "Administración", "Zaragoza");
 		dep3= new Departamento(3, "Informática", "Zaragoza");
 		dep4= new Departamento(4, "Administración","Huesca");
-		salida.writeObject(dep4);
-		salida.writeObject(dep3);
-		salida.writeObject(dep2);
 		salida.writeObject(dep);
+		salida.writeObject(dep2);
+		salida.writeObject(dep3);
+		salida.writeObject(dep4);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
