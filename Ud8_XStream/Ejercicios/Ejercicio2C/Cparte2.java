@@ -19,10 +19,8 @@ public class Cparte2 {
 		ArrayList departamento = (ArrayList) xstream.fromXML(new FileReader("Fichero\\Departamento.xml"));
 
 		System.out.println("Número de departamentos: " + departamento.size());
-		List<Departamento> listaPersonas = new ArrayList<Departamento>();
-		listaPersonas = departamento;
-
-		Iterator iterador = listaPersonas.listIterator();
+		
+		Iterator iterador = departamento.listIterator();
 		while (iterador.hasNext()) {
 			Departamento p = (Departamento) iterador.next();
 			System.out.println("Numero: "+p.getNumdepartamento()+", nombre: " + p.getNombre()+ ", localidad: " + p.getLocalidad());
