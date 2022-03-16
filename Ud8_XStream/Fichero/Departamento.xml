@@ -1,0 +1,22 @@
+<Departamentos>
+  <Departamento>
+    <Numdepartamento>1</Numdepartamento>
+    <Nombre>Informática</Nombre>
+    <Localidad>Huesca</Localidad>
+  </Departamento>
+  <Departamento>
+    <Numdepartamento>2</Numdepartamento>
+    <Nombre>Administración</Nombre>
+    <Localidad>Zaragoza</Localidad>
+  </Departamento>
+  <Departamento>
+    <Numdepartamento>3</Numdepartamento>
+    <Nombre>Informática</Nombre>
+    <Localidad>Zaragoza</Localidad>
+  </Departamento>
+  <Departamento>
+    <Numdepartamento>4</Numdepartamento>
+    <Nombre>Administración</Nombre>
+    <Localidad>Huesca</Localidad>
+  </Departamento>
+</Departamentos>

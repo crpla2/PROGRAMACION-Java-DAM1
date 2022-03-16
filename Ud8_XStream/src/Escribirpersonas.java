@@ -6,6 +6,8 @@ public class Escribirpersonas {
 		File fichero = new File ("Fichero\\FichPersona.dat");
 		FileInputStream filein= new FileInputStream(fichero);
 		ObjectInputStream dataIS=new ObjectInputStream(filein);
+//		Las tres lineas en una:
+//		ObjectInputStream dataIS=new ObjectInputStream(FileInputStream filein= new FileInputStream("Fichero\\FichPersona.dat"));
 		System.out.println("Comienza el proceso de creación del fichero XML..");
 		ListaPersonas listaper=new ListaPersonas();
 		try{
@@ -21,7 +23,7 @@ public class Escribirpersonas {
 		    xstream.alias("DatosPersona", Persona.class);
 		    xstream.addImplicitCollection(ListaPersonas.class, "lista");
 		    xstream.toXML(listaper, new FileOutputStream ("Fichero\\Personas.xml"));
-		    System.out.println("Creado fichero XML...");					
+		    System.out.println("Creado fichero XML...");			
 		}catch (Exception e) {e.printStackTrace(); }
 	
 	}

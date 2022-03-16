@@ -2,7 +2,7 @@ import java.io.*;
 public class EscribirFichObject {
 	public static void main(String [] args) throws IOException{
 		Persona persona;
-		File fichero = new File("D:\\FichPersona.dat");
+		File fichero = new File("Fichero/FichPersona.dat");
 		FileOutputStream fileout= new FileOutputStream(fichero);
 		ObjectOutputStream dataOS = new ObjectOutputStream(fileout);
 		String nombres []={"Ana", "Luis Miguel", "Alicia", "Pedro", "Manuel",
