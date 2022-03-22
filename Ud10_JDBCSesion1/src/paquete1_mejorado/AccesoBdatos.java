@@ -33,7 +33,7 @@ private Connection conecta;
 		try {
 			Statement consulta = conecta.createStatement();
 			ResultSet reg = consulta.executeQuery ("SELECT * FROM Libros");
-			while (reg.next ()) {
+			while (reg.next ()) {	// reg.getint(id..), reg.getint(nombre),  reg.getint(precio)
 				Libro libro= new Libro(reg.getInt (1), reg.getString (2), reg.getInt (3));
 				lista.add(libro);
 		}
