@@ -31,7 +31,7 @@ public class HolaMundoGestionErrores {
              "SELECT titulo, precio FROM Libros WHERE precio > 2");
              while (rs.next()) {
            	  String name = rs.getString("titulo");
-           	  float price = rs.getFloat("precio");
+           	 int price = rs.getInt("precio");
            	  System.out.println(name + "\t" + price);
                  }
                  rs.close();
