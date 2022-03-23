@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Scanner;
 
-public class Menu_interfaces {
+public class menu_Bueno {
 	static ArrayList<Cliente> lista = new ArrayList<Cliente>();
 	static Scanner s = new Scanner(System.in);
 
@@ -90,25 +90,41 @@ public class Menu_interfaces {
 		System.out.println("Es moroso:");
 		boolean moroso = Boolean.parseBoolean(MyInput.readString());
 		Cliente nuevo=new Cliente(nombre, telefono, direccion, nif, moroso);	
-		for(Cliente c:lista)
-			if(c.getNif().equalsIgnoreCase(nuevo.getNif()))
-				System.out.println("El nif del cliente que intenta introducir ya existe");	
-			else
-				lista.add(nuevo);
+		if(comprobarDNI(nif)) {
+			lista.add(nuevo);
+			System.out.println("Cliente añadido correctamente\n");
+		}
+			
+		else System.out.println("ERROR NIF existente");
+			
+		
+	}
+
+	private static boolean comprobarDNI(String nif) {
+		for(Cliente c:lista) 
+			if(c.getNif().equalsIgnoreCase(nif))
+				return false;	
+		return true;
 		
 	}
 
 	private static void consultarClientes() {
 		System.out.println("Clientes:");
+		if (lista.isEmpty())
+			System.out.println("\tNo hay datos\n");
+		else {
 		for (Cliente c : lista)
-			System.out.println(c);
+			System.out.println(c);}
 	}
 
 	private static void consultarMoroso() {
 		System.out.println("Clientes morosos:");
+		if (lista.isEmpty())
+			System.out.println("\tNo hay datos\n");
+		else {
 		for (Cliente c : lista)
 			if (c.moroso)
-				System.out.println(c);
+				System.out.println(c);}
 
 	}
 
@@ -198,7 +214,7 @@ public class Menu_interfaces {
 	}
 	else {
 		try {
-			System.out.println("El archivo no existe, creando archivo");
+			System.out.println("El archivo no existe, creando archivo\n");
 			f.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();

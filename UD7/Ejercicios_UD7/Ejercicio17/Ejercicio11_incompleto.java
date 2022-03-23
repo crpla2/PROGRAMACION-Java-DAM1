@@ -7,12 +7,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Ejercicio11 extends JFrame{
+public class Ejercicio11_incompleto extends JFrame{
 	Container panel; 
 	public JButton anadir ;
 	public JFileChooser recuadro;
 	
-	public Ejercicio11() {
+	public Ejercicio11_incompleto() {
 		super("Lista Alumnos");
 		panel=getContentPane();
 		panel.setLayout((null));
@@ -32,7 +32,7 @@ public class Ejercicio11 extends JFrame{
 	
 
 	public static void main(String[] args) {
-		Ejercicio11 ventana= new Ejercicio11(); 
+		Ejercicio11_incompleto ventana= new Ejercicio11_incompleto(); 
 
 	}
 
