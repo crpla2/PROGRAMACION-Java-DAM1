@@ -16,7 +16,7 @@ public class AccesoBdatosUsu {
 			+ "?serverTimezone=Europe/Madrid";
 	private static String username = "root";
 	private static String password = "root";
-
+	static ResultSet reg;
 	private Connection conecta;
 
 	public void conectar() throws SQLException, ClassNotFoundException {
@@ -27,7 +27,7 @@ public class AccesoBdatosUsu {
 	
 	public String compruebaContraseña(String usu, String pass) throws SQLException {
 		Statement consulta = conecta.createStatement();
-		ResultSet reg= consulta.executeQuery("select * from usuario where username = '"+usu+"' and password='"+pass+"'");
+		reg= consulta.executeQuery("select * from usuario where username = '"+usu+"' and password='"+pass+"'");
 		if (reg.next())
 			return reg.getNString(3);
 		else
