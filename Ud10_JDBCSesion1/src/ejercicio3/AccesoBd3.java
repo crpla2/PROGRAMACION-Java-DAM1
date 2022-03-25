@@ -98,6 +98,22 @@ public class AccesoBd3 {
 		imprimirDatosResulSet(consulta.executeQuery("SELECT * FROM socio"));
 	}
 
+	public ResultSet consultarTodosRSetSocios() throws SQLException {
+		Statement consulta = conecta.createStatement();
+		ResultSet reg= consulta.executeQuery("SELECT * FROM socio");
+		return reg;
+	}
+	
+	public ResultSet consultarPorLocRS(String localidad) throws SQLException {
+		
+		
+			Statement consulta = conecta.createStatement();
+
+			ResultSet reg = consulta.executeQuery("SELECT * FROM socio  where localidad LIKE '" + localidad + "'");
+
+			return reg;
+		
+	}
 	public void imprimirDatosResulSet(ResultSet reg) {
 		try {
 			int cont = 0;

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -24,22 +25,26 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 	private JButton buscar;
 	private JButton anterior;
 	private JButton siguiente;
-	private JTextField aceptarText;
+	private JTextField buscarT;
 	private JTextField socioT;
 	private JLabel nombre;
 	private JTextField estaturaT;
 	private JTextField edadT;
 	private JTextField localidadT;
+	private JLabel cm;
+	private JLabel años;
+	private JLabel texto;
+	private Object ResultSet;
 		
 	
 
 	public ConsultaSocio() {
 		
-		super("Control de Acceso Curso 2021-2022");
+		super("Búsqueda de socios por localidad");
 		panel = getContentPane();
 		panel.setLayout(null);
 		
-		socio = new JLabel("Usuario");
+		socio = new JLabel("Socio");
 		socio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		socio.setBounds(21, 43, 101, 33);
 		panel.add(socio);
@@ -64,63 +69,81 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 		localidad.setBounds(21, 180, 101, 33);
 		panel.add(localidad);
 		
+		texto = new JLabel("txtxtxtxtxtxt");
+		texto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		texto.setBounds(150, 210, 101, 33);
+		panel.add(texto);
 		
 		buscar = new JButton("Buscar");
-		buscar.setBounds(271, 71, 89, 23);
+		buscar.setBounds(311, 81, 89, 23);
 		panel.add(buscar);
 		buscar.addActionListener(this);
 		
 		anterior = new JButton("Anterior");
-		anterior.setBounds(171, 271, 89, 23);
+		anterior.setBounds(100, 271, 89, 23);
 		panel.add(anterior);
 		anterior.addActionListener(this);
 		
 		siguiente = new JButton("Siguente");
-		siguiente.setBounds(271, 271, 89, 23);
+		siguiente.setBounds(215, 271, 89, 23);
 		panel.add(siguiente);
 		siguiente.addActionListener(this);
 		
 
-		aceptarText = new JTextField();
-		aceptarText.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		aceptarText.setBounds(111, 50, 111, 20);
-		panel.add(aceptarText);
-		aceptarText.setColumns(10);
+		buscarT = new JTextField();
+		buscarT.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buscarT.setBounds(311, 50, 89, 20);
+		panel.add(buscarT);
+		buscarT.setColumns(10);
+	
 		
 
 		socioT = new JTextField();
 		socioT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		socioT.setBounds(21, 145, 111, 20);
+		socioT.setBounds(100, 51, 41, 20);
 		panel.add(socioT);
 		socioT.setColumns(10);
+		socioT.setEditable(false);
 		
 
 		nombreT = new JTextField();
 		nombreT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		nombreT.setBounds(111, 50, 111, 20);
+		nombreT.setBounds(100, 81, 151, 20);
 		panel.add(nombreT);
 		nombreT.setColumns(10);
+		nombreT.setEditable(false);
 		
 
 		estaturaT = new JTextField();
 		estaturaT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		estaturaT.setBounds(111, 50, 111, 20);
+		estaturaT.setBounds(100, 116, 31, 20);
 		panel.add(estaturaT);
 		estaturaT.setColumns(10);
+		estaturaT.setEditable(false);
 		
+		cm = new JLabel("cm.");
+		cm.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		cm.setBounds(140, 116, 31, 20);
+		panel.add(cm);	
 
 		edadT = new JTextField();
 		edadT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		edadT.setBounds(111, 50, 111, 20);
+		edadT.setBounds(100, 151, 21, 20);
 		panel.add(edadT);
 		edadT.setColumns(10);
+		edadT.setEditable(false);
 		
+		años = new JLabel("años");
+		años.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		años.setBounds(130, 151, 31, 20);
+		panel.add(años);
 
 		localidadT = new JTextField();
 		localidadT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		localidadT.setBounds(111, 50, 111, 20);
+		localidadT.setBounds(100, 186, 61, 20);
 		panel.add(localidadT);
 		localidadT.setColumns(10);
+		localidadT.setEditable(false);
 		
 		
 		setSize( 450, 370);
@@ -142,9 +165,67 @@ public class ConsultaSocio extends JFrame implements ActionListener{
 
 @Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	
+	ResultSet o;
+	
+	
+	if (buscarT.getText().isEmpty()) {
 		
-	}
+//			socioT.setText());
+			try {
+				o=	abd.consultarTodosRSetSocios();
+				o.next();
+				socioT.setText(o.getString(1));
+				nombreT.setText(o.getString(2));
+				estaturaT.setText(o.getString(3));
+				edadT.setText(o.getString(4));
+				localidadT.setText(o.getString(5));
+		
+		if(e.getSource()==siguiente) {
+			
+			while(o.next()) {
+				
+				socioT.setText(o.getString(1));
+				nombreT.setText(o.getString(2));
+				estaturaT.setText(o.getString(3));
+				edadT.setText(o.getString(4));
+				localidadT.setText(o.getString(5));
+				
+			}
+			}o.close();
+		}
+			 catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		} else {
+		try {
+			o= abd.consultarPorLocRS(buscarT.getText());
+			o.first();
+			socioT.setText(o.getString(1));
+			nombreT.setText(o.getString(2));
+			estaturaT.setText(o.getString(3));
+			edadT.setText(o.getString(4));
+			localidadT.setText(o.getString(5));
+			
+			if(e.getSource()==siguiente) {
+				
+				while(o.next()) {
+					
+					socioT.setText(o.getString(1));
+					nombreT.setText(o.getString(2));
+					estaturaT.setText(o.getString(3));
+					edadT.setText(o.getString(4));
+					localidadT.setText(o.getString(5));
+					
+				}
+				}o.close();
+		} catch (SQLException e1) {
+			}
+	
+		
+	}}
 
 	public static void main(String[] args) {
 		ConsultaSocio ventana= new ConsultaSocio();
