@@ -14,7 +14,7 @@ public class AccesoBd3 {
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
 	private static String hostname = "localhost";
-	private static String port = "3308";
+	private static String port = "3309";
 	private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database
 			+ "?serverTimezone=Europe/Madrid";
 	private static String username = "root";
