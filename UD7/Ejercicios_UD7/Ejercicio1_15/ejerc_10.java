@@ -10,7 +10,7 @@ public class ejerc_10 {
 	try {
 		
 		FileInputStream origen= new FileInputStream(n);
-		FileOutputStream destino= new FileOutputStream("Ficheros/copia_de_fichero2.tx");
+		FileOutputStream destino= new FileOutputStream("Ficheros/copia_de_fichero2.txt");
 		
 		int caracterLeido;
 		

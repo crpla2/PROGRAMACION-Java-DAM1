@@ -129,12 +129,13 @@ public class menu_Bueno {
 	}
 
 	private static void modificarCliente(Cliente cNuevo) {
+		Cliente cliente=null;
 		for (Cliente c : lista) {
 			if (c.getNif().equalsIgnoreCase(cNuevo.getNif())) {
-				lista.remove(c);
-				lista.add(cNuevo);
+				cliente=c;
 			}
-		}
+		}lista.remove(cliente);
+				lista.add(cNuevo);
 	}
 
 	private static void borrarClientes() {

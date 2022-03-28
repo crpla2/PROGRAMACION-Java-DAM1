@@ -13,7 +13,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -52,6 +51,7 @@ public class B {
 			while (true) {
 
 				departamento = documento.createElement("departamento");
+				
 				numDepartamento = documento.createElement("numero");
 				textoNumDep = documento.createTextNode(String.valueOf(d.getNumdepartamento()));
 				numDepartamento.appendChild(textoNumDep);
