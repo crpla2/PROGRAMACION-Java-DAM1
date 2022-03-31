@@ -1,0 +1,29 @@
+El combo no tiene que implementar ninguna interfaz, pero el botón sí: 
+
+public class Practica6 extends JFrame implements ActionListener{.....
+....
+private Container panel;
+private JComboBox combo1,combo2,combo3; // uno para cada color
+.....
+
+combo1=new JComboBox(); // para el rojo
+combo1.setBounds(120,10,50,30);
+...
+// Los 256 valores del combo se añaden con un for(....)
+		combo1.addItem(String a añadir, de 0 a 255) 
+...
+....
+Añadirlo al panel contenedor....
+Acordarse de registrar el manejador de eventos para el botón
+boton1.addActionListener(this);
+
+Lo mismo para los otros dos combos (combo2 -> cantidad verde y combo3-> cantidad azul
+
+----------------------------------------------------------------------------------------
+public void actionPerformed(ActionEvent e) {
+...
+combo1.getSelectedItem(); --> Pregunta por el valor seleccionado // Lo mismo para los otros dos combos
+
+Color color1=new Color(cantidad de rojo, cantidad de verde, cantidad de azul);
+Asignarle el color al panel(método setBackground(color1)).
+------------------------------------------------------------------------------------------
