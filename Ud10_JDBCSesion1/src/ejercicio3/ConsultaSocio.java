@@ -20,7 +20,9 @@ import javax.swing.JTextField;
 import ejercicio1.Socio;
 
 public class ConsultaSocio extends JFrame implements ActionListener {
-	static AccesoBd3 abd3 = new AccesoBd3();
+	private static AccesoBd3 abd3 = new AccesoBd3();
+	static ResultSet rs = null;
+	static int ultimo = 0;
 	private Container panel;
 	private JLabel socio;
 	private JTextField nombreT;
@@ -108,7 +110,7 @@ public class ConsultaSocio extends JFrame implements ActionListener {
 
 		nombreT = new JTextField();
 		nombreT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		nombreT.setBounds(100, 81, 151, 20);
+		nombreT.setBounds(100, 81, 171, 20);
 		panel.add(nombreT);
 		nombreT.setColumns(10);
 		nombreT.setEditable(false);
@@ -139,14 +141,15 @@ public class ConsultaSocio extends JFrame implements ActionListener {
 
 		localidadT = new JTextField();
 		localidadT.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		localidadT.setBounds(100, 186, 61, 20);
+		localidadT.setBounds(100, 186, 131, 20);
 		panel.add(localidadT);
 		localidadT.setColumns(10);
 		localidadT.setEditable(false);
 
-		setSize(450, 370);
+		setSize(490, 370);
 		setVisible(true);
 		setDefaultCloseOperation(0);
+		//cierre del programa y desconexion de la base de datos
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
 				try {
@@ -163,111 +166,52 @@ public class ConsultaSocio extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ResultSet o = null;
+
 		try {
 			if (e.getSource() == buscar) {
 				if (buscarT.getText().isEmpty()) {
-					o = abd3.consultarTodosRSetSocios();
-					o.last();
-					o.getRow();
-					if (o.getRow() > 0) {
-						primero(o);
-						posicion(o);
-						anterior.setEnabled(true);
-						siguiente.setEnabled(true);
-
-					} else {
-
-						JOptionPane.showMessageDialog(panel,
-								"No existen registros en esa localidad " + buscarT.getText(), "error",
-								JOptionPane.INFORMATION_MESSAGE);
-
-					}
+					rs = abd3.TodosRS();
 				} else {
-					o = abd3.consultarPorLocRS(buscarT.getText());
-					o.last();
-
-					System.out.println(o.isBeforeFirst());
-					if (o.getRow() > 0) {
-						primero(o);
-						posicion(o);
-						anterior.setEnabled(true);
-						siguiente.setEnabled(true);
-
-					} else {
-
-						JOptionPane.showMessageDialog(panel,
-								"No existen registros en esa localidad " + buscarT.getText(), "error",
-								JOptionPane.INFORMATION_MESSAGE);
-
-					}
-
+					rs = abd3.PorLocRS(buscarT.getText());
 				}
-			} // del botón buscar
-
+				rs.last();
+				ultimo = rs.getRow();
+				if (ultimo < 1) {
+					JOptionPane.showMessageDialog(panel, "No existen registros en  " 
+							+ buscarT.getText(),"error", JOptionPane.INFORMATION_MESSAGE);
+					anterior.setEnabled(false);
+					siguiente.setEnabled(false);
+				} else {
+					rs.first();
+				}
+			} // fin buscar
 			if (e.getSource() == siguiente) {
-				
-				if (!o.isLast()) {
-					if (o.next()) {
-						socioT.setText(o.getString(1));
-						nombreT.setText(o.getString(2));
-						estaturaT.setText(o.getString(3));
-						edadT.setText(o.getString(4));
-						localidadT.setText(o.getString(5));
-					}
-					posicion(o);
+				if (rs.isLast()) {
+					JOptionPane.showMessageDialog(panel, "No existen registros posteriores", 
+							"Último socio",JOptionPane.INFORMATION_MESSAGE, null);
 				} else {
-					JOptionPane.showMessageDialog(null, "No existen registros posteriores", "Último socio",
-							JOptionPane.INFORMATION_MESSAGE, null);
+					rs.next();
 				}
-			}
+			} // fin siguiente
 			if (e.getSource() == anterior) {
-				
-				if (!o.isFirst()) {
-					if (o.previous()) {
-						socioT.setText(o.getString(1));
-						nombreT.setText(o.getString(2));
-						estaturaT.setText(o.getString(3));
-						edadT.setText(o.getString(4));
-						localidadT.setText(o.getString(5));
-					}
-					posicion(o);
-				} else
-					JOptionPane.showMessageDialog(null, "No existen registros anteriores", "Primer socio",
-							JOptionPane.INFORMATION_MESSAGE, null);
-
-			}
+				if (rs.isFirst()) {
+					JOptionPane.showMessageDialog(panel, "No existen registros anteriores",
+							"Primer socio",JOptionPane.INFORMATION_MESSAGE, null);
+				} else {
+					rs.previous();
+				}
+			} // fin anterior
+			socioT.setText(rs.getString(1));
+			nombreT.setText(rs.getString(2));
+			estaturaT.setText(rs.getString(3));
+			edadT.setText(rs.getString(4));
+			localidadT.setText(rs.getString(5));
+			anterior.setEnabled(true);
+			siguiente.setEnabled(true);
+			texto.setText("Socio " + String.valueOf(rs.getRow()) + " de " + String.valueOf(ultimo));
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
-
 	}
-
-	private void posicion(ResultSet o) throws SQLException {
-		int x=o.getRow();
-		o.last();
-		int i=o.getRow();
-		texto.setText("Socio " + String.valueOf(x) + " de "
-				+ String.valueOf(i));
-	}
-
-	private void primero(ResultSet o) {
-		try {
-			o.first();
-			socioT.setText(o.getString(1));
-			nombreT.setText(o.getString(2));
-			estaturaT.setText(o.getString(3));
-			edadT.setText(o.getString(4));
-			localidadT.setText(o.getString(5));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	
 
 	public static void main(String[] args) {
 		ConsultaSocio ventana = new ConsultaSocio();

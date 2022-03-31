@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import ejercicio1.Socio;
 
 public class AccesoBd3 {
-	
+
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
 	private static String hostname = "localhost";
-	private static String port = "3308";
+	private static String port = "3309";
 	private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database
 			+ "?serverTimezone=Europe/Madrid";
 	private static String username = "root";
@@ -26,9 +26,8 @@ public class AccesoBd3 {
 		Class.forName(driver);
 		conecta = DriverManager.getConnection(url, username, password);
 	}
-	
-	
-	public ArrayList<Socio> consultarTodosSocios() {
+
+	public ArrayList<Socio> consTodosAL() {
 		ArrayList<Socio> lista = new ArrayList<Socio>();
 
 		try {
@@ -46,32 +45,7 @@ public class AccesoBd3 {
 		return lista;
 	}
 
-	public Socio consultarIdSocios(int numero) {
-		try {
-			Statement consulta = conecta.createStatement();
-			ResultSet reg = consulta.executeQuery("SELECT * FROM socio WHERE id =" + numero);
-
-			Socio socio = new Socio();
-			if (reg.next()) {
-
-				socio.setId(reg.getInt(1));
-				socio.setNombre(reg.getString(2));
-				socio.setEstatura(reg.getInt(3));
-				socio.setEstatura(reg.getInt(4));
-				socio.setLocalidad(reg.getString(5));
-			} else
-				socio = null;
-			consulta.close();
-			return socio;
-		} catch (SQLException e) {
-			System.out.println("error en la consulta" + e.getMessage());
-			return null;
-		}
-	} // de consultarId
-
-	//
-
-	public ArrayList<Socio> consultarPorLocalidadSocios(String localidad) {
+	public ArrayList<Socio> consPorLocAL(String localidad) {
 		ArrayList<Socio> lista = new ArrayList<Socio>();
 		try {
 			Statement consulta = conecta.createStatement();
@@ -85,7 +59,7 @@ public class AccesoBd3 {
 				lista.add(libro);
 			}
 			consulta.close();
-			
+
 			return lista;
 		} catch (SQLException e) {
 			System.out.println("error en la consulta" + e.getMessage());
@@ -93,46 +67,24 @@ public class AccesoBd3 {
 		}
 	}
 
-	public void consultarTodosResultSetSocios() throws SQLException {
+	public ResultSet TodosRS() throws SQLException {
 		Statement consulta = conecta.createStatement();
-		imprimirDatosResulSet(consulta.executeQuery("SELECT * FROM socio"));
-	}
-
-	public ResultSet consultarTodosRSetSocios() throws SQLException {
-		Statement consulta = conecta.createStatement();
-		ResultSet reg= consulta.executeQuery("SELECT * FROM socio");
+		ResultSet reg = consulta.executeQuery("SELECT * FROM socio");
 		return reg;
 	}
-	
-	public ResultSet consultarPorLocRS(String localidad) throws SQLException {
-		
-		
-			Statement consulta = conecta.createStatement();
-			String cadenaSQL= "SELECT * FROM socio  where localidad = '" + localidad + "'";
-			ResultSet reg = consulta.executeQuery(cadenaSQL);
-			System.out.println(cadenaSQL);
-			return reg;
-		
-	}
-	public void imprimirDatosResulSet(ResultSet reg) {
-		try {
-			int cont = 0;
-			while (reg.next()) {
-				System.out.println(reg.getInt(1) + "-" + reg.getString(2) + "-" + reg.getInt(3) + "-" + reg.getInt(4)
-						+ "-" + reg.getString(5));
-				cont++;
-			}
-			System.out.println("Total: "+cont);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+	public ResultSet PorLocRS(String localidad) throws SQLException {
+		Statement consulta = conecta.createStatement();
+		String cadenaSQL = "SELECT * FROM socio  where localidad = '" + localidad + "'";
+		ResultSet reg = consulta.executeQuery(cadenaSQL);
+		System.out.println(cadenaSQL);
+		return reg;
 	}
-	
+
 	public void desconectar() throws SQLException {
 		if (conecta != null) {
 			conecta.close();
-		}}
+		}
+	}
 
 }
