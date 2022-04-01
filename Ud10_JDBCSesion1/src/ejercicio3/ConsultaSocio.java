@@ -8,8 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ListIterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,12 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import ejercicio1.Socio;
-
 public class ConsultaSocio extends JFrame implements ActionListener {
 	private static AccesoBd3 abd3 = new AccesoBd3();
-	static ResultSet rs = null;
-	static int ultimo = 0;
+	private static ResultSet rs = null;
+	private static int ultimo = 0;
 	private Container panel;
 	private JLabel socio;
 	private JTextField nombreT;
@@ -166,14 +162,15 @@ public class ConsultaSocio extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		String cadenaSQL;
 		try {
 			if (e.getSource() == buscar) {
 				if (buscarT.getText().isEmpty()) {
-					rs = abd3.TodosRS();
+					cadenaSQL = "SELECT * FROM socio ";
 				} else {
-					rs = abd3.PorLocRS(buscarT.getText());
+					cadenaSQL = "SELECT * FROM socio  where localidad = '" + localidad + "'";
 				}
+				rs = abd3.consulta(cadenaSQL);
 				rs.last();
 				ultimo = rs.getRow();
 				if (ultimo < 1) {
@@ -216,7 +213,9 @@ public class ConsultaSocio extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		ConsultaSocio ventana = new ConsultaSocio();
 		try {
+			
 			abd3.conectar();
+			System.out.println("conectado");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
