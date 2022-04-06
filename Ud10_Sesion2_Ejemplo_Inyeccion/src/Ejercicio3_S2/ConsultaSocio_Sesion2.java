@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class ConsultaSocio_Sesion2 extends JFrame implements ActionListener {
-	private static AccesoBd3_Sesion2 abd3 = new AccesoBd3_Sesion2();
+	private static AccesoBD3_S2 abd3 = new AccesoBD3_S2();
 	private static ResultSet rs = null;
 	private static int ultimo = 0;
 	private Container panel;

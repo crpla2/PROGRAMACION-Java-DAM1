@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AccesoBd3_Sesion2 {
+public class AccesoBD3_S2 {
 
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "baloncesto";
