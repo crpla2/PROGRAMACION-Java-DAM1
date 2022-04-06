@@ -1,4 +1,4 @@
-package ejercicio2;
+package Ejercicio2_S2;
 
 import java.awt.Container;
 import java.awt.Font;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class ControlAccesoBuena extends JFrame implements ActionListener {
+public class ControlAccesoBuena_Sesion2 extends JFrame implements ActionListener {
 
 	private Container panel;
 	private JLabel usuario;
@@ -26,8 +26,8 @@ public class ControlAccesoBuena extends JFrame implements ActionListener {
 	private JButton aceptar;
 	private JLabel Respuesta;
 	private JLabel Imagen;
-	static AccesoBdatosUsu abd= new AccesoBdatosUsu();
-	public ControlAccesoBuena() {
+	static AccesoBdatosUsu_Sesion2 abd= new AccesoBdatosUsu_Sesion2();
+	public ControlAccesoBuena_Sesion2() {
 		super("Control de Acceso Curso 2021-2022");
 		panel = getContentPane();
 		panel.setLayout(null);
@@ -60,7 +60,7 @@ public class ControlAccesoBuena extends JFrame implements ActionListener {
 		panel.add(Respuesta);
 
 		Imagen = new JLabel("");
-		Imagen.setIcon(new ImageIcon("./imagenes/candado_cerrado.png"));
+		Imagen.setIcon(new ImageIcon("imagenes/candado_cerrado.png"));
 		Imagen.setBounds(171, 119, 111, 131);
 		panel.add(Imagen);
 
@@ -94,22 +94,21 @@ public class ControlAccesoBuena extends JFrame implements ActionListener {
 			Respuesta.setText(abd.compruebaContraseña(usuarioText.getText(), passwordText.getText()));
 		} catch (SQLException e1) {
 			System.out.println("Usuario o contraseñas incorrectos");
-			
 		};
 		
 		try {
 			if (abd.reg.getNString(3).equals(abd.compruebaContraseña(usuarioText.getText(), passwordText.getText()))) {
-				Imagen.setIcon(new ImageIcon("./imagenes/candado_abierto.png"));
+				Imagen.setIcon(new ImageIcon("imagenes/candado_abierto.png"));
 			}
-				
+			
 		} catch (SQLException e1) {
 			System.out.println("Usuario o contraseña incorrectos");
-			Imagen.setIcon(new ImageIcon("./imagenes/candado_cerrado.png"));
+			Imagen.setIcon(new ImageIcon("imagenes/candado_cerrado.png"));
 		}}
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		ControlAccesoBuena ventana = new ControlAccesoBuena();
+		ControlAccesoBuena_Sesion2 ventana = new ControlAccesoBuena_Sesion2();
 		abd.conectar();
 	
 	}
