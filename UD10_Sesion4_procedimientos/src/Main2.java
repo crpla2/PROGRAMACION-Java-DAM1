@@ -9,11 +9,11 @@ public class Main2 {
 	private static String driver = "com.mysql.cj.jdbc.Driver";
     private static String database = "procedimientos";
     private static String hostname = "localhost";
-    private static String port = "3306";
+    private static String port = "3308";
 	private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database +
 									"?serverTimezone=Europe/Madrid";
     private static String username = "root";
-    private static String password = "rootroot";
+    private static String password = "root";
  
   	
 	public static void main(String[] args) 
