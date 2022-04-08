@@ -21,9 +21,7 @@ public class AccesoBD_S4 {
 	private static String password = "root";
 	private Connection conecta;
 
-	private PreparedStatement consulta;
-	private String cadenaSQL;
-
+	
 	public void conectar() throws SQLException, ClassNotFoundException {
 		Class.forName(driver);
 		conecta = DriverManager.getConnection(url, username, password);
@@ -34,16 +32,16 @@ public class AccesoBD_S4 {
 		conecta = null; // = conecta.close();
 	}
 
-	public void importePedido(int numero) {
+	public void importePedido(int numPedido) {
 		try {
 			CallableStatement proc = conecta.prepareCall("Select importePedido(?) ");
-			proc.setInt(1, numero);
+			proc.setInt(1, numPedido);
 			ResultSet rs = proc.executeQuery();
 			rs.next();
 			if (rs.getDouble(1) < 0)
-				System.out.println("El número de pedido " + numero + " no existe.");
+				System.out.println("El número de pedido " + numPedido + " no existe.");
 			else
-				System.out.println("El total del pedido " + numero + " es " + rs.getBigDecimal(1));
+				System.out.println("El total del pedido " + numPedido + " es " + rs.getBigDecimal(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,7 +73,7 @@ public class AccesoBD_S4 {
 
 	public void incrementarPC(int categoria, int cantidad) {
 		try {
-			int salida = 0;
+			
 			CallableStatement proc = conecta.prepareCall("CALL incrementarPrecioCategoria (?,?,?) ");
 			proc.setInt(1, categoria);
 			proc.setInt(2, cantidad);
@@ -83,10 +81,10 @@ public class AccesoBD_S4 {
 			proc.execute();
 			if (proc.getInt(3) >= 0) {
 				if (proc.getInt(3) == 0)
-					System.out.println("No se actualizó ningún producto para la categoría " + categoria);
+					System.out.println("No se actualizó ningún producto para la categoría -> " + categoria);
 				else
 					System.out.println("Se incrementó el precio en un " + cantidad
-							+ "% para los productos de la categoría " + categoria);
+							+ "% para "+ proc.getInt(3)+" productos de la categoría -> " + categoria+".");
 			} else
 				System.out.println("Ocurrió un ERROR");
 

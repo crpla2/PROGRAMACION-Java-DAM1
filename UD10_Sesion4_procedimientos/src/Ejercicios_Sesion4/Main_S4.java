@@ -11,19 +11,19 @@ public class Main_S4 {
 		Scanner s= new Scanner(System.in);
 		try {
 			abd.conectar();
-			//1
+			//1/ Importe del pedido:
 //			System.out.println("Introduce un numero de pedido");
 //			abd.importePedido(s.nextInt());
-			//2
+			//2/ Productos bajo mínimos
 //			System.out.println("Introduce la categoría");
 //			abd.productosCBM(s.nextInt());
-			//3
-			int a,b;
+			//3/ Incrementar percio 
+			int cat,porcentaje;
 			System.out.println("Introduce el numero de categoría");
-			a=s.nextInt();
+			cat=s.nextInt();
 			System.out.println("Introduce porcentaje");
-			b=s.nextInt();
-			abd.incrementarPC(a, b);
+			porcentaje=s.nextInt();
+			abd.incrementarPC(cat, porcentaje);
 			abd.desconectar();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
