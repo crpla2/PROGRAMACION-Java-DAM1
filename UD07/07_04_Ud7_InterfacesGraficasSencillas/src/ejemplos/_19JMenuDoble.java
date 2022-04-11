@@ -53,7 +53,7 @@ public class _19JMenuDoble extends JFrame implements ActionListener{
             getContentPane().setBackground(new Color(0,255,0));
         }
     }
-    
+    public void actionPerf(ActionEvent e) {}
     public static void main(String[] args) {
         _19JMenuDoble formulario1 = new _19JMenuDoble();
         formulario1.setBounds(0,0,300,200);
