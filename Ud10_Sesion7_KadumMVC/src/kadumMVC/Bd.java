@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class Bd {
     private String  maquina     = "localhost";
     private String  usuario     = "root";
-    private String  clave       = "rootroot";
-    private int puerto          = 3306;
+    private String  clave       = "root";
+    private int puerto          = 3308;
     private String  servidor    = "";
     private static Connection conexion  = null;
  
