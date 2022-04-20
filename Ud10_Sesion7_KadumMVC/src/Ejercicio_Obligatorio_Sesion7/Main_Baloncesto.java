@@ -1,6 +1,6 @@
 package Ejercicio_Obligatorio_Sesion7;
  
-public class Principal_Baloncesto {
+public class Main_Baloncesto {
     public static void main(String[] args) {
         //Invocar al constructor de la clase Bd
         new Bd_Baloncesto("baloncesto");

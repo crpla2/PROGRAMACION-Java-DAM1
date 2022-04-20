@@ -52,7 +52,7 @@ public class View_Baloncesto extends JFrame {
     View_Baloncesto(){
         //Métodos de la JFrame
         setBounds(100, 100, 450, 500);//Definir las dimensiones de la ventana
-        setTitle("GESTIÓN DE CLIENTES - Baloncesto");    //Barra de título
+        setTitle("GESTIÓN DE SOCIOS - Baloncesto");    //Barra de título
        
         setDefaultCloseOperation(0);
 		//cierre del programa y desconexion de la base de datos
