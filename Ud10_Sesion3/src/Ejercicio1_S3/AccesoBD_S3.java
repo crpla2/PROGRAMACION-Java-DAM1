@@ -144,7 +144,31 @@ public class AccesoBD_S3 {
 			System.out.print(" ERROR: ");
 			return e.getErrorCode();
 		}
+		}
 		
+		public int actualizarSalarioConTransacciones(int departamento, double porcentaje) throws SQLException {
+//			Habria que implementar las transacciones en todos los metodos con INSERT, 
+//			UPDATE y DELETE. Al setear el autocomit a false se queda asi para 
+//			toda le sesion y despues de todos los métodos habria que hacer un comit, 
+//			para que esto no pase y sólo afecte a este metodo seteo el autocommit a true despues de hacer el commit o el rollback 
+			String cadenaSQL="update emp set SAL=SAL+(SAL*?) where DEPTNO=?";
+			try {
+				conecta.setAutoCommit(false);
+				PreparedStatement consulta= conecta.prepareStatement(cadenaSQL);
+				consulta.setDouble(1, porcentaje);
+				consulta.setInt(2, departamento);
+				conecta.commit();
+				conecta.setAutoCommit(true);
+				
+				return consulta.executeUpdate();
+				
+			}catch (SQLException e){
+				System.out.print(" ERROR: ");
+				conecta.rollback();
+				conecta.setAutoCommit(true);
+				return e.getErrorCode();
+			}
+			
 		
 	}
 	 public int borrarEmpleado (int numero) {
