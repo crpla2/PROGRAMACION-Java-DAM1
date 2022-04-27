@@ -1,7 +1,5 @@
-package empleados;
+package Ejercicios;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Set;
 
@@ -14,29 +12,29 @@ import javax.persistence.TypedQuery;
 // Alberto Carrera Martín - Abril 2020
 //
 
-public class AccesoBdatos {
+public class AccesoBdatosEj {
 	private EntityManagerFactory emf;
 	private EntityManager em;
 	
 	public void conectar() {
-		emf = Persistence.createEntityManagerFactory("db/empleados.odb");
+		emf = Persistence.createEntityManagerFactory("db/empleadosEj.odb");
 		em = emf.createEntityManager();
 	}
 	public void desconectar() {
 		em.close();
 		emf.close();
 	}
-	public DepartamentoEntity buscarDepartamento(int numDepartamento) {
-		return em.find(DepartamentoEntity.class, numDepartamento);
+	public DepartamentoEntityEj buscarDepartamento(int numDepartamento) {
+		return em.find(DepartamentoEntityEj.class, numDepartamento);
 	}// de método buscarDepartamento
 	//
 	@SuppressWarnings("deprecation")
 	public void imprimirDepartamento (int numDepartamento) {
-		DepartamentoEntity d = buscarDepartamento(numDepartamento);
+		DepartamentoEntityEj d = buscarDepartamento(numDepartamento);
 		if (d==null)
 			System.out.println("No existe el Departamento " + numDepartamento);
 		else {
-			Set <EmpleadoEntity> empleados =d.getEmpleados();
+			Set <EmpleadoEntityEj> empleados =d.getEmpleados();
 			String datos="Datos del departamento " + numDepartamento + ": ";
 			datos+= "Nombre: " + d.getNombre() + " - Localidad: " + d.getLocalidad()+ "\n";
 			if (empleados.isEmpty())
@@ -45,7 +43,7 @@ public class AccesoBdatos {
 				datos+="Lista de empleados"+ "\n";
 				datos+="*******************";
 			}
-			for (EmpleadoEntity empleado :empleados) {
+			for (EmpleadoEntityEj empleado :empleados) {
 				datos+= "\nNúmero de empleado: " + empleado.getEmpnoId()+ "\n";
 				datos+= "Nombre: " + empleado.getNombre()+ "\n";
 				datos+= "Oficio: " + empleado.getOficio()+ "\n";
@@ -65,7 +63,7 @@ public class AccesoBdatos {
 		}
 	} // de método imprimirDepartamento
 	
-	public boolean insertarDepartamento (DepartamentoEntity d) {
+	public boolean insertarDepartamento (DepartamentoEntityEj d) {
 		if (buscarDepartamento(d.getDptoId())!=null)
 			return false;
 		em.getTransaction().begin();
@@ -74,8 +72,8 @@ public class AccesoBdatos {
 		return true;
 	} // de insertarDepartamento
 	
-	public boolean modificarDepartamento (DepartamentoEntity d) {
-		DepartamentoEntity departamentoBuscado=buscarDepartamento(d.getDptoId());
+	public boolean modificarDepartamento (DepartamentoEntityEj d) {
+		DepartamentoEntityEj departamentoBuscado=buscarDepartamento(d.getDptoId());
 		if (departamentoBuscado==null)
 			return false;
 		em.getTransaction().begin();
@@ -90,7 +88,7 @@ public class AccesoBdatos {
 	// pero el resto de los atributos del departamento a null. Por eso no dejo borrar
 	
 	public boolean borrarDepartamento  (int numDepartamento) {
-		DepartamentoEntity departamentoBuscado=buscarDepartamento(numDepartamento);
+		DepartamentoEntityEj departamentoBuscado=buscarDepartamento(numDepartamento);
 		if (departamentoBuscado==null || !departamentoBuscado.getEmpleados().isEmpty() )
 			return false;
 		em.getTransaction().begin();
@@ -108,10 +106,10 @@ public class AccesoBdatos {
         	      "SELECT COUNT(d) FROM DepartamentoEntity d", Long.class);
         System.out.println("Total Departamentos: " + tq1.getSingleResult());
         //
-        TypedQuery<DepartamentoEntity>tq2 =
-	            em.createQuery("SELECT d FROM DepartamentoEntity d", DepartamentoEntity.class);
-	        List<DepartamentoEntity> l2 = tq2.getResultList();
-	        for (DepartamentoEntity r2 : l2) {
+        TypedQuery<DepartamentoEntityEj>tq2 =
+	            em.createQuery("SELECT d FROM DepartamentoEntity d", DepartamentoEntityEj.class);
+	        List<DepartamentoEntityEj> l2 = tq2.getResultList();
+	        for (DepartamentoEntityEj r2 : l2) {
 	            System.out.println("Nombre :  " + r2.getNombre()+ ", Localidad: "+ r2.getLocalidad());
 	        }
 	    //
@@ -135,8 +133,70 @@ public class AccesoBdatos {
 	     
 	}// de demoJPQL
 	
-	
-	
+	//Ej1
+	public void nombreFecha(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+	}
+	//Ej2
+	public void nombreFecha2(String s){
+		String s2="%"+s+"%";
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d "
+				+ "WHERE d.nombre like :n", Object[].class);
+		Ej1.setParameter("n", s2);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+	}
+	//Ej3
+	public void empleadosID(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, d.oficio, d.departamento.nombre FROM EmpleadoEntityEj d"
+				+ " WHERE d.oficio ='Empleado' and d.departamento.nombre = 'I+D", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+		}
+	//Ej4
+	public void mas2003(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, d.alta, FROM EmpleadoEntityEj d"
+				+ " WHERE year(d.alta) >= 2003 ", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+		}
+	//Ej5
+	public void EmpOrdenados(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, d.empleados.nombre FROM DepartamentoEntityEj d order by d.nombre", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+		}
+	//Ej6
+	public void depConEmp(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.departamento.nombre, count(d), sum(d.salario), max(d.salario) FROM EmpleadoEntityEj d"
+				+ " group by d.departamento", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+		}
+	//Ej7
+	public void depConEmpMas5(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.departamento.nombre, count(d), sum(d.salario), max(d.salario) FROM EmpleadoEntityEj d"
+				+ " group by d.departamento having count(d)>=5", Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+		}
+	//Ej8
+	public void EmpCOnJefe(){
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre FROM EmpleadoEntityEj d  "
+				+ "where d.dirId = d.empnoId "
+				, Object[].class);
+		List<Object[]>lista=Ej1.getResultList();
+		imprimir(lista);
+	}
+	private void imprimir(List<Object[]>lista) {
+		for (Object[]o:lista) {
+			for(Object o2:o) {
+				System.out.print(o2+" - ");
+			}
+			System.out.println();
+		}}
 //--------------------------------------------------------------------------------------------------------------
 	
 } // de la clase

@@ -40,7 +40,7 @@ public class MainCreacion {
 	            Persistence.createEntityManagerFactory("db/empleados.odb");
 	   EntityManager em = emf.createEntityManager();
        em.getTransaction().begin();
-       em.persist(d1); em.persist(d2);em.persist(d3);em.persist(d4);em.persist(d5);
+       em.persist(d1);em.persist(d2);em.persist(d3);em.persist(d4);em.persist(d5);
        em.persist(e1);em.persist(e2);em.persist(e3);em.persist(e4);em.persist(e5);em.persist(e6);em.persist(e7);
        em.persist(e8);em.persist(e9);em.persist(e10);em.persist(e11);em.persist(e12);em.persist(e13);em.persist(e14);
        //       
