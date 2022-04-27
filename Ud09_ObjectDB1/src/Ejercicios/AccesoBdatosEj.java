@@ -184,9 +184,7 @@ public class AccesoBdatosEj {
 		}
 	//Ej8
 	public void EmpCOnJefe(){
-		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre FROM EmpleadoEntityEj d  "
-				+ "where d.dirId = d.empnoId "
-				, Object[].class);
+		TypedQuery<Object[]> Ej1=em.createQuery("SELECT d.nombre, 'su jefe es', d.dirId.nombre, 'departamento',d.departamento.dptoId FROM EmpleadoEntityEj d  ", Object[].class);
 		List<Object[]>lista=Ej1.getResultList();
 		imprimir(lista);
 	}
