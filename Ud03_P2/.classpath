@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="EjerciciosObjetos"/>
+	<classpathentry kind="src" path="EjerciciosColecciones"/>
+	<classpathentry kind="src" path="EjerciciosColecciones_II"/>
+	<classpathentry kind="src" path="EjemploArrayList"/>
+	<classpathentry kind="src" path="ejercicios"/>
+	<classpathentry kind="src" path="UD3_parte2_Miguel"/>
+	<classpathentry kind="src" path="aprendeJava"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

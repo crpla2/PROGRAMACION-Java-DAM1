@@ -64,7 +64,6 @@ public class AccesoBdatosEj {
 //	Ejercicio 11 Ordenando descendentemente por departamento y ascendentemente por salario
 
 //	Ejercicio 12 Empleados sin jefe
-	
 
 //	Ejercicio 13 Departamento al que pertenece el empleado nº 1039
 
