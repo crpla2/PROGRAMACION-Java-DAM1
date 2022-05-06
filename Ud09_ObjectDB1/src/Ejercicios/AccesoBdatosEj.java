@@ -29,8 +29,17 @@ public class AccesoBdatosEj {
 	public void Ejercicios() {
 //	Ejercicio 1 Nombre y fecha de alta de todos los empleados
 	TypedQuery<Object[]> tq1=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d", Object[].class);
+//	---------------------------------------------------
+	//OPCION2//
+//	TypedQuery<EmpleadoEntityEj>tq1b=em.createQuery("select d from EmpleadoEntityEj d",EmpleadoEntityEj.class);
+//	List<EmpleadoEntityEj>lista=tq1b.getResultList();
+//	for(EmpleadoEntityEj e:lista )
+//		System.out.println(e.getNombre()+" "+e.getAlta());
+//	---------------------------------------------
 //	Ejercicio 2 Ídem de la anterior pero para aquellos que "Carrera" forma parte del nombre. No distinguir mayúsculas de minúsculas
-	TypedQuery<Object[]> tq2=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d WHERE d.nombre like '%Carrera%' or d.nombre like '%carrera%'", Object[].class);	
+	TypedQuery<Object[]> tq2=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d WHERE d.nombre like '%Carrera%' or d.nombre like '%carrera%'", Object[].class);
+	//opcion2//
+	TypedQuery<Object[]> tq2b=em.createQuery("SELECT d.nombre, d.alta FROM EmpleadoEntityEj d WHERE upper(d.nombre) like '%CARRERA%'", Object[].class);
 //	Ejercicio 3 Empleados del Departamento I+D cuyo oficio es el de Empleado
 	TypedQuery<Object[]> tq3 = em.createQuery(
 		"SELECT d.nombre, d.oficio, d.departamento.nombre FROM EmpleadoEntityEj d WHERE d.oficio ='Empleado' and d.departamento.nombre = 'I+D'",
@@ -73,7 +82,7 @@ public class AccesoBdatosEj {
 	TypedQuery<Object[]> tq13 = em.createQuery("SELECT d.dptoId,d.nombre FROM DepartamentoEntityEj d where d.empleados.empnoId =1039"
 			,
 			Object[].class);
-		List<Object[]> lista = tq3.getResultList();
+		List<Object[]> lista = tq2b.getResultList();
 		imprimir(lista);
 	}
 	private void imprimir(List<Object[]> lista) {
