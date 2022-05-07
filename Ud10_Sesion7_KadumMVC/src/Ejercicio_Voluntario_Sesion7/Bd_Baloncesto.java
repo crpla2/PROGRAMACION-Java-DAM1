@@ -1,4 +1,4 @@
-package Ejercicio_Obligatorio_Sesion7;
+package Ejercicio_Voluntario_Sesion7;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

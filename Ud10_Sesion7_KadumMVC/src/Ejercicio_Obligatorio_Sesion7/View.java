@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
  
-public class View_Baloncesto extends JFrame {
+public class View extends JFrame {
  
     /**************** ATRIBUTOS ***************************/
     //CONTENEDOR PRINCIPAL
@@ -49,7 +49,7 @@ public class View_Baloncesto extends JFrame {
     protected JTable tabla; //Tabla propiamente dicha
  
     /**************** MÉTODOS ***************************/
-    View_Baloncesto(){
+    View(){
         //Métodos de la JFrame
         setBounds(100, 100, 450, 500);//Definir las dimensiones de la ventana
         setTitle("GESTIÓN DE SOCIOS - Baloncesto");    //Barra de título

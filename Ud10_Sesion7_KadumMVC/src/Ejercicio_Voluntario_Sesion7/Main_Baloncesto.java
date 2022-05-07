@@ -1,4 +1,4 @@
-package Ejercicio_Obligatorio_Sesion7;
+package Ejercicio_Voluntario_Sesion7;
  
 public class Main_Baloncesto {
     public static void main(String[] args) {
