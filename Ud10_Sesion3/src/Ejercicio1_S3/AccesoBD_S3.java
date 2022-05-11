@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 
 public class AccesoBD_S3 {
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String database = "demodb";
 	private static String hostname = "localhost";
-	private static String port = "3308";
+	private static String port = "3309";
 	private static String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database
 			+ "?serverTimezone=Europe/Madrid";
 	private static String username = "root";
@@ -110,26 +111,33 @@ public class AccesoBD_S3 {
 		
 	}
 	public int insertarConBean(Empleado emp) {
+		int resultado;
 		String cadenaSQL="insert into emp values(?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement consulta= conecta.prepareStatement(cadenaSQL);
 			consulta.setInt(1, emp.getNumero());
-			consulta.setString(2, emp.getNombre());
-			consulta.setString(3, emp.getPuesto());
-			consulta.setInt(4, emp.getJefe());
-			consulta.setDate(5,emp.getAntiguedad());
+			consulta.setString(2,emp.getNombre());
+			consulta.setString(3,emp.getPuesto());
+			if(emp.getJefe()>0)
+				consulta.setInt(4, emp.getJefe());
+			else
+				consulta.setNull(4, Types.INTEGER);
+			consulta.setDate(5, emp.getAntiguedad());
 			consulta.setDouble(6, emp.getSalario());
-			consulta.setDouble(7, emp.getComision());
-			consulta.setInt(8, emp.getDepartamento());
-			
-			consulta.executeUpdate();
+			if(emp.getComision()>0)
+				consulta.setDouble(7, emp.getComision());
+			else
+				consulta.setNull(7, Types.DECIMAL);
+			consulta.setInt(8,emp.getDepartamento());
+			resultado= consulta.executeUpdate();
 			consulta.close();
-			return 1;
+			
+			return resultado;
 		} catch (SQLException e) {
 			System.out.print(" ERROR: ");
 			return e.getErrorCode();
-			
 		}		
+			
 	}
 	public int actualizarSalario(int departamento, double porcentaje) {
 		String cadenaSQL="update emp set SAL=SAL+(SAL*?) where DEPTNO=?";

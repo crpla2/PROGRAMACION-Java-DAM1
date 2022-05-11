@@ -1,4 +1,4 @@
-package Ejercicio_Obligatorio_Sesion7;
+package Ejercicio_Voluntario_Sesion7;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +12,11 @@ import javax.swing.JOptionPane;
 
 public class Controller_Baloncesto implements ActionListener, MouseListener {
 	private View view;
+	private int ID = 0;
 
 	Controller_Baloncesto(View view) {
 		this.view = view;
-		cargarTabla();
+		cargarTabla(ID);
 	}
 
 	@Override
@@ -62,6 +63,19 @@ public class Controller_Baloncesto implements ActionListener, MouseListener {
 					this.view.txtEstatura.getText(), this.view.txtEdad.getText(), this.view.txtLocalidad.getText());
 			break;
 
+		case "BUSCAR":
+			String id = this.view.txtSocioId.getText();
+
+			if (Bd_Baloncesto.existeId(id)) {
+				ID = Integer.parseInt(id);
+
+			} else {
+				JOptionPane.showMessageDialog(this.view.getContentPane(),
+						" No existe el ID.\nPor favor introduzca otro número. ", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+
+			break;
+
 		default:
 			System.err.println("Comando no definido");
 			break;
@@ -70,7 +84,9 @@ public class Controller_Baloncesto implements ActionListener, MouseListener {
 		limpia();
 
 		// refrescar la tabla
-		cargarTabla();
+		cargarTabla(ID);
+
+		ID = 0;
 	}
 
 	// Método para limpiar los campos de la ventana
@@ -84,7 +100,7 @@ public class Controller_Baloncesto implements ActionListener, MouseListener {
 
 	// Método que recarga los datos de la tabla de la base de datos
 	// en la tabla de la clase View
-	protected void cargarTabla() {
+	protected void cargarTabla(int iD) {
 		Vector<Object> fila;
 		// Borra los datos de la tabla
 		for (int i = this.view.dtm.getRowCount(); i > 0; i--) {
@@ -93,7 +109,10 @@ public class Controller_Baloncesto implements ActionListener, MouseListener {
 		// Cargar datos en la tabla
 		try {
 			ResultSet rs;
-			rs = Bd_Baloncesto.getClientes();
+			if (iD == 0)
+				rs = Bd_Baloncesto.getClientes();
+			else
+				rs = Bd_Baloncesto.getCliente(iD);
 			while (rs.next()) {
 				// Añadir registro a registro en el vector
 				fila = new Vector<Object>();

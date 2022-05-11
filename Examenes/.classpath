@@ -3,8 +3,14 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="Evaluacion1"/>
 	<classpathentry kind="src" path="Evaluacion2"/>
+<<<<<<< HEAD
 	<classpathentry kind="src" path="Evaluacion3_I"/>
 	<classpathentry kind="lib" path="Libreria/kxml2-2.3.0.jar"/>
 	<classpathentry kind="lib" path="Libreria/xstream-1.4.2.jar"/>
+=======
+	<classpathentry kind="src" path="Evaluacion3"/>
+	<classpathentry kind="lib" path="librerias/kxml2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="librerias/xstream-1.4.2.jar"/>
+>>>>>>> branch 'main' of git@github.com:crpla2/repoProgramacion.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
