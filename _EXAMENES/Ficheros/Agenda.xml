@@ -1,0 +1,47 @@
+<list>
+  <Datos__Contacto>
+    <nombre>Ana</nombre>
+    <movil>618219478</movil>
+    <email>anam@gmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Luis Miguel</nombre>
+    <movil>676198234</movil>
+    <email>lm34@hotmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Alicia</nombre>
+    <movil>677431270</movil>
+    <email>alice@telefonica.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Pedro</nombre>
+    <movil>636189032</movil>
+    <email>peter21@hotmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Manuel</nombre>
+    <movil>677118998</movil>
+    <email>manolo11@gmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Andres</nombre>
+    <movil>688126721</movil>
+    <email>andresito33@yahoo.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Julio</nombre>
+    <movil>654665789</movil>
+    <email>julio_huesca@gmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Antonio</nombre>
+    <movil>645913240</movil>
+    <email>toneti@gmail.com</email>
+  </Datos__Contacto>
+  <Datos__Contacto>
+    <nombre>Maria Jesus</nombre>
+    <movil>678109523</movil>
+    <email>mchesu@gmail.com</email>
+  </Datos__Contacto>
+</list>
