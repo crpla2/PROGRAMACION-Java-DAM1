@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import empleados.EmpleadoEntity;
 //
 // Alberto Carrera Martín - Abril 2020
 //
@@ -96,6 +98,7 @@ public class AccesoBdatosEj {
 //EJERCICIO 9.2
 //	Ejer 01
 	public int incrementarSalario(int cantidad) {
+		
 		int actualizados;
 		em.getTransaction().begin();
 		Query q=em.createQuery("UPDATE EmpleadoEntityEj set salario= salario + :n");
@@ -128,6 +131,12 @@ public class AccesoBdatosEj {
 	}
 //	Ejer04
 	public int borrarEmpleado(int numEmpleado) {
+//		EmpleadoEntity e= em.find(EmpleadoEntity.class, numEmpleado);
+//		em.getTransaction().begin();
+//		em.remove(e);
+//		em.getTransaction().commit();
+//		//==========================================
+		
 		int borrados;
 		em.getTransaction().begin();
 		Query q= em.createQuery("DELETE FROM EmpleadoEntityEj where empnoId= :n");

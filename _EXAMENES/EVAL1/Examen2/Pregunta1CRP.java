@@ -15,10 +15,10 @@ public class Pregunta1CRP {
 	
 	public static int posicion(char letra) {
 		int p=0; 
-			for(int i=0;i<letras.length;i++) {
+			for(int i=0;i<letras.length;i++) 
 				if(letras[i]==letra)
 					p=i;
-			}	
+				
 		return p;
 	} 
 
@@ -28,17 +28,17 @@ public class Pregunta1CRP {
 		System.out.println("intrduzca la cadena a codificar:");
 		String palabra=" ";
 		
-			palabra=s.nextLine();
+			palabra=s.nextLine().toUpperCase();
 		for(int i=0;i<palabra.length();i++) {
-			if(palabra.charAt(i)==' ') {
-				System.out.print("b");}
+			if(palabra.charAt(i)==' ') 
+				System.out.print("b");
 			else
 				System.out.print(codigo[posicion(palabra.charAt(i))]);
 			if(palabra.charAt(i)!=palabra.length()-1)
 				System.out.print("b");
 		}
 		
-		
+		//· · · ·— — —· — · ·· —b· —· —— · ·· ·— — —· · ·
 		
 	} // del main
 	

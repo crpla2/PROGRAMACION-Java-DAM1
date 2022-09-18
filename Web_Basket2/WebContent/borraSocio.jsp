@@ -11,7 +11,7 @@
   <body>
     <%
       Class.forName("com.mysql.cj.jdbc.Driver");
-      Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3308/baloncesto?useSSL=false&serverTimezone=CET", "root", "root");
+      Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/baloncesto?useSSL=false&serverTimezone=CET", "root", "root");
       Statement s = conexion.createStatement();
 
       s.execute ("DELETE FROM socio WHERE socioID=" + request.getParameter("socioID"));
