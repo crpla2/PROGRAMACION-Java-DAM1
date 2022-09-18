@@ -106,7 +106,12 @@ public class AccesoBdatos {
         //
         TypedQuery<Long> tq1 = em.createQuery(
         	      "SELECT COUNT(d) FROM DepartamentoEntity d", Long.class);
-        System.out.println("Total Departamentos: " + tq1.getSingleResult());
+//        System.out.println("Total Departamentos: " + tq1.getSingleResult());
+        List<Long>lista=tq1.getResultList();
+        for(Long l :lista)
+        	System.out.println(l);
+        System.out.println(lista.get(0));
+        System.out.println(tq1.getResultList().get(0));
         //
         TypedQuery<DepartamentoEntity>tq2 =
 	            em.createQuery("SELECT d FROM DepartamentoEntity d", DepartamentoEntity.class);
@@ -114,6 +119,7 @@ public class AccesoBdatos {
 	        for (DepartamentoEntity r2 : l2) {
 	            System.out.println("Nombre :  " + r2.getNombre()+ ", Localidad: "+ r2.getLocalidad());
 	        }
+	        System.out.println();
 	    //
         TypedQuery<Object[]>tq3 =
 	            em.createQuery("SELECT d.nombre, d.localidad FROM DepartamentoEntity  d", Object[].class);

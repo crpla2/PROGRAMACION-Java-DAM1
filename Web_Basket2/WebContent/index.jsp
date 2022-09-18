@@ -23,7 +23,7 @@
         <div class="panel-heading text-center"><h2>Club de Baloncesto</h2></div>
         <%
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3308/baloncesto?useSSL=false&serverTimezone=CET", "root", "root");
+          Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3307/baloncesto?useSSL=false&serverTimezone=CET", "root", "root");
           Statement s = conexion.createStatement();
 
           ResultSet listado = s.executeQuery ("SELECT * FROM socio");
@@ -50,7 +50,7 @@
         %>
         <td>
         <form method="get" action="modificaSocio.jsp">
-		  <input type="hidden" name="socioID" value="<%=listado.getString("socioID") %>">
+					<input type="hidden" name="socioID" value="<%=listado.getString("socioID") %>">
           <input type="hidden" name="nombre" value="<%=listado.getString("nombre") %>">
           <input type="hidden" name="estatura" value="<%=listado.getString("estatura") %>">
           <input type="hidden" name="edad" value="<%=listado.getString("edad") %>">

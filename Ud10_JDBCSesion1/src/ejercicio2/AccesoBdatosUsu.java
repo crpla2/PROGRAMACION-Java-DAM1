@@ -30,6 +30,7 @@ public class AccesoBdatosUsu {
 		reg= consulta.executeQuery("select * from usuario where username = '"+usu+"' and password='"+pass+"'");
 		if (reg.next())
 			return reg.getNString(3);
+		
 		else
 			return "No existe el Usuario/Contraseña";
 		

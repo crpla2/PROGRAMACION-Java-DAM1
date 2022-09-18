@@ -13,9 +13,9 @@ public class Main2 {
         
 		AccesoBdatos abd = new AccesoBdatos();
 		abd.conectar();
-	//	abd.imprimirDepartamento(90);
-	//	abd.imprimirDepartamento(40);
-	//	abd.imprimirDepartamento(10);
+//		abd.imprimirDepartamento(90);
+//		abd.imprimirDepartamento(40);
+//		abd.imprimirDepartamento(10);
 		
     //  System.out.println(abd.insertarDepartamento(new DepartamentoEntity(60,"Recursos Humanos", "Chimillas")));
     //  System.out.println(abd.insertarDepartamento(new DepartamentoEntity(60,"Recursos Humanos", "Chimillas")));

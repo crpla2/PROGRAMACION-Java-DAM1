@@ -19,17 +19,17 @@
         <div class="panel-heading text-center">Modificación de socio</div>
           <form method="get" action="grabaSocioModificado.jsp">
             <div class="form-group"> 
-             	 <label>&nbsp;&nbsp;Nº de socio:&nbsp;</label><input type="text" size="5" name="socioID" value="<%= request.getParameter("socioID") %>" readonly>
+              <label>&nbsp;&nbsp;Nº de socio:&nbsp;</label><input type="text" size="5" name="socioID" value="<%= request.getParameter("socioID") %>" readonly>
             </div>
             <div class="form-group">
-            	<label>&nbsp;&nbsp;Nombre:&nbsp;</label><input type="text" size="35" name="nombre" value="<%= request.getParameter("nombre") %>">
+            <label>&nbsp;&nbsp;Nombre:&nbsp;</label><input type="text" size="35" name="nombre" value="<%= request.getParameter("nombre") %>">
             </div>
             <div class="form-group">
-             	<label>&nbsp;&nbsp;Estatura (en cm):&nbsp;</label><input type="text" size="5" name="estatura" value="<%= request.getParameter("estatura") %>">
-             	<label>&nbsp;&nbsp;Edad:&nbsp;</label><input type="text" size="5" name="edad" value="<%= request.getParameter("edad") %>">
+             <label>&nbsp;&nbsp;Estatura (en cm):&nbsp;</label><input type="text" size="5" name="estatura" value="<%= request.getParameter("estatura") %>">
+             <label>&nbsp;&nbsp;Edad:&nbsp;</label><input type="text" size="5" name="edad" value="<%= request.getParameter("edad") %>">
             </div>
             <div class="form-group">
-             	<label>&nbsp;&nbsp;Localidad:&nbsp;</label><input type="text" name="localidad" size="20" value="<%= request.getParameter("localidad") %>">
+             <label>&nbsp;&nbsp;Localidad:&nbsp;</label><input type="text" name="localidad" size="20" value="<%= request.getParameter("localidad") %>">
             </div>
             <hr>
             &nbsp;&nbsp;<a href="index.jsp" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Cancelar</a>
