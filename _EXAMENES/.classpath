@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="EVAL1"/>
 	<classpathentry kind="src" path="EVAL2"/>
 	<classpathentry kind="src" path="EVAL3"/>
+	<classpathentry kind="src" path="_EVAL1_Recuperacion(Ud3_Parte1)"/>
 	<classpathentry kind="lib" path="Libreria/kxml2-2.3.0.jar"/>
 	<classpathentry kind="lib" path="Libreria/xstream-1.4.2.jar"/>
 	<classpathentry kind="lib" path="Libreria/objectdb.jar"/>
